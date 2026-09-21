@@ -1,53 +1,677 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cours 00 — Prise en main de Word | Microsoft 365 Learning Hub</title><link rel="stylesheet" href="assets/css/style.css"><style>
-.reference-shot{margin:1.25rem 0 1.75rem;padding:1rem;background:#fff;border:1px solid #d9e2ec;border-radius:14px;box-shadow:0 6px 22px rgba(15,23,42,.08)}
-.reference-shot img{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:8px}
-.reference-shot figcaption{margin-top:.8rem;font-size:.9rem;line-height:1.5;color:#5b6472}
-.reference-shot figcaption a{font-weight:600}
-</style></head><body>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cours 00 — Prise en main de Word | Microsoft 365 Learning Hub</title><link rel="stylesheet" href="assets/css/style.css">
+<style>
+.course-shot{margin:1.25rem 0 2rem;padding:1rem;background:#fff;border:1px solid #d9e2ec;border-radius:14px;box-shadow:0 6px 22px rgba(15,23,42,.08)}
+.course-shot img{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:8px}
+.course-shot figcaption{margin-top:.75rem;font-size:.92rem;line-height:1.5;color:#5b6472}
+.course-shot.compact img{max-height:620px;object-fit:contain}
+</style>
+
+<style>
+.learn-video{margin:1.25rem 0 1.75rem;padding:1rem;background:#fff;border:1px solid #d9e2ec;border-radius:14px;box-shadow:0 6px 22px rgba(15,23,42,.08)}
+.learn-video h3{margin-top:0}
+.video-frame{position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:10px;background:#111}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.learn-video .video-note{margin:.75rem 0 0;font-size:.92rem;color:#5b6472}
+</style>
+
+<style>
+.tp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin:1rem 0}
+.tp-card{padding:1rem;border:1px solid #d9e2ec;border-radius:12px;background:#fff}
+.quiz-box{margin-top:1.25rem}
+.quiz-question{padding:1rem;margin:.9rem 0;border:1px solid #d9e2ec;border-radius:12px;background:#fff}
+.quiz-question label{display:block;font-weight:700;margin-bottom:.55rem}
+.quiz-question input[type="text"]{width:100%;box-sizing:border-box;padding:.75rem;border:1px solid #aeb8c4;border-radius:8px;font:inherit}
+.quiz-actions{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;margin-top:1rem}
+.quiz-btn{border:0;border-radius:8px;padding:.8rem 1.15rem;font-weight:700;cursor:pointer;background:#185abd;color:#fff}
+.quiz-btn.secondary{background:#e8eef7;color:#17365d}
+.quiz-result{margin-top:1rem;padding:1rem;border-radius:12px;background:#eef6ff;border-left:4px solid #185abd;font-weight:700}
+.quiz-feedback{display:block;margin-top:.45rem;font-size:.92rem}
+.quiz-feedback.ok{color:#137333}.quiz-feedback.no{color:#b3261e}
+@media(max-width:650px){.tp-grid{grid-template-columns:1fr}}
+</style>
+
+<style>
+.quiz-question fieldset{border:0;padding:0;margin:0}
+.quiz-question legend{font-weight:700;margin-bottom:.75rem}
+.quiz-choice{display:flex!important;gap:.65rem;align-items:flex-start;font-weight:400!important;padding:.55rem .65rem;margin:.35rem 0!important;border:1px solid #d9e2ec;border-radius:8px;cursor:pointer}
+.quiz-choice input{margin-top:.2rem}
+.quiz-choice:has(input:checked){border-color:#185abd;background:#eef6ff}
+</style>
+
+<style id="coursera-modern-theme">
+:root{
+  --edu-blue:#0056d2;
+  --edu-blue-dark:#003f9e;
+  --edu-blue-soft:#eef5ff;
+  --edu-ink:#17223b;
+  --edu-muted:#5b6577;
+  --edu-border:#e2e8f0;
+  --edu-surface:#ffffff;
+  --edu-bg:#f7f9fc;
+  --edu-success:#087f5b;
+  --edu-radius:14px;
+  --edu-shadow:0 8px 28px rgba(23,34,59,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--edu-bg);
+  color:var(--edu-ink);
+  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.65;
+}
+.shell{width:min(1220px,calc(100% - 40px));margin-inline:auto}
+
+/* Header */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--edu-border);
+  box-shadow:0 2px 10px rgba(15,23,42,.04);
+  backdrop-filter:blur(12px);
+}
+.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--edu-ink);font-weight:750;font-size:1.05rem}
+.brand .logo{
+  display:grid;place-items:center;width:38px;height:38px;border-radius:8px;
+  background:var(--edu-blue);color:white;font-weight:800;
+  box-shadow:none;
+}
+.navlinks{display:flex;align-items:center;gap:8px}
+.navlinks a{
+  color:#334155;text-decoration:none;font-weight:600;
+  padding:9px 12px;border-radius:8px;
+}
+.navlinks a:hover{background:#f1f5f9;color:var(--edu-blue)}
+
+/* Course layout */
+.layout{
+  display:grid;
+  grid-template-columns:260px minmax(0,1fr);
+  gap:36px;
+  align-items:start;
+  padding-top:32px;
+  padding-bottom:60px;
+}
+.sidebar{
+  position:sticky;top:92px;
+  background:var(--edu-surface);
+  border:1px solid var(--edu-border);
+  border-radius:var(--edu-radius);
+  padding:18px 12px;
+  box-shadow:0 3px 14px rgba(15,23,42,.04);
+  max-height:calc(100vh - 116px);
+  overflow:auto;
+}
+.sidebar strong{
+  display:block;padding:4px 12px 13px;
+  color:var(--edu-ink);font-size:1.02rem;
+  border-bottom:1px solid var(--edu-border);
+  margin-bottom:8px;
+}
+.sidebar a{
+  display:block;
+  padding:9px 12px;
+  margin:2px 0;
+  border-radius:8px;
+  text-decoration:none;
+  color:#475569;
+  font-size:.92rem;
+  line-height:1.35;
+  border-left:3px solid transparent;
+}
+.sidebar a:hover{
+  color:var(--edu-blue);
+  background:var(--edu-blue-soft);
+  border-left-color:var(--edu-blue);
+}
+article{min-width:0}
+
+/* Course hero */
+.lesson-head{
+  position:relative;overflow:hidden;
+  padding:36px 38px;
+  margin-bottom:20px;
+  border-radius:18px;
+  background:linear-gradient(120deg,#102a56,#0056d2);
+  color:#fff;
+  box-shadow:var(--edu-shadow);
+}
+.lesson-head:after{
+  content:"";position:absolute;width:260px;height:260px;border-radius:50%;
+  right:-90px;top:-120px;background:rgba(255,255,255,.08);
+}
+.lesson-head .course-no{
+  color:#dbeafe!important;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  font-size:.78rem;
+  font-weight:800;
+}
+.lesson-head h1{
+  color:#fff;margin:.3rem 0 .55rem;
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1.12;letter-spacing:-.025em;
+}
+.lesson-head p{max-width:760px;color:#edf5ff;margin:.35rem 0}
+.progress{
+  height:7px;background:rgba(255,255,255,.22);
+  border-radius:999px;overflow:hidden;margin-top:20px;
+}
+.progress span{display:block;height:100%;background:#fff;border-radius:inherit}
+
+/* Jump navigation */
+.lesson-nav{
+  display:flex;gap:8px;flex-wrap:wrap;
+  margin:0 0 22px;
+  padding:12px;
+  background:#fff;
+  border:1px solid var(--edu-border);
+  border-radius:12px;
+}
+.lesson-nav a{
+  text-decoration:none;color:#334155;font-weight:650;font-size:.9rem;
+  padding:8px 11px;border-radius:8px;
+}
+.lesson-nav a:hover{background:var(--edu-blue-soft);color:var(--edu-blue)}
+
+/* Lessons */
+.lesson{
+  background:var(--edu-surface);
+  border:1px solid var(--edu-border);
+  border-radius:16px;
+  padding:32px 34px;
+  margin:0 0 22px;
+  box-shadow:0 4px 18px rgba(15,23,42,.045);
+}
+.lesson h2{
+  margin:.35rem 0 .8rem;
+  font-size:clamp(1.45rem,2.5vw,2rem);
+  line-height:1.25;letter-spacing:-.018em;
+  color:var(--edu-ink);
+}
+.lesson h3{margin:1.6rem 0 .7rem;color:#25324a;font-size:1.12rem}
+.lesson p{color:#4b5565}
+.badge{
+  display:inline-flex!important;align-items:center;
+  background:var(--edu-blue-soft)!important;
+  color:var(--edu-blue)!important;
+  border:1px solid #cfe0ff;
+  border-radius:999px!important;
+  padding:6px 11px!important;
+  font-size:.76rem!important;
+  font-weight:800!important;
+  letter-spacing:.045em;
+}
+
+/* Learning components */
+.steps{counter-reset:edu-step;display:grid;gap:10px;margin:1rem 0}
+.step{
+  position:relative;
+  padding:14px 16px 14px 54px!important;
+  border:1px solid var(--edu-border);
+  border-radius:11px;
+  background:#fff!important;
+  color:#334155;
+}
+.step:before{
+  counter-increment:edu-step;
+  content:counter(edu-step);
+  position:absolute;left:14px;top:12px;
+  width:28px;height:28px;display:grid;place-items:center;
+  border-radius:50%;background:var(--edu-blue);color:white;
+  font-weight:800;font-size:.82rem;
+}
+.two-col,.method-grid,.tp-grid{gap:14px!important}
+.mini-card,.tp-card{
+  border:1px solid var(--edu-border)!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  box-shadow:none!important;
+  padding:18px!important;
+}
+.mini-card strong,.tp-card strong{color:#25324a}
+.tip,.callout{
+  border-radius:12px!important;
+  padding:16px 18px!important;
+  margin:16px 0!important;
+  box-shadow:none!important;
+}
+.tip{
+  background:#effaf6!important;
+  border:1px solid #c7eee0!important;
+  border-left:4px solid var(--edu-success)!important;
+}
+.callout{
+  background:#f7f9fc!important;
+  border:1px solid var(--edu-border)!important;
+  border-left:4px solid var(--edu-blue)!important;
+}
+.resources{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.resources a{
+  display:inline-flex;align-items:center;
+  color:var(--edu-blue)!important;
+  background:#fff;
+  border:1px solid #b8cff5;
+  border-radius:8px;
+  padding:9px 12px;
+  text-decoration:none!important;
+  font-weight:700;
+}
+.resources a:hover{background:var(--edu-blue-soft)}
+
+/* Screenshots and video */
+.course-shot,.learn-video{
+  border:1px solid var(--edu-border)!important;
+  border-radius:14px!important;
+  padding:12px!important;
+  background:#fff!important;
+  box-shadow:0 6px 22px rgba(15,23,42,.07)!important;
+}
+.course-shot img{border-radius:9px!important}
+.course-shot figcaption,.video-note{color:var(--edu-muted)!important}
+.video-frame{border-radius:10px!important}
+
+/* Checklists */
+.checklist{display:grid;gap:9px;margin:1rem 0}
+.checklist label{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:12px 14px;
+  background:#fafcff;
+  border:1px solid var(--edu-border);
+  border-radius:9px;
+}
+.checklist input{accent-color:var(--edu-blue);margin-top:.3rem}
+
+/* Quiz */
+.quiz-question{
+  border:1px solid var(--edu-border)!important;
+  border-radius:12px!important;
+  box-shadow:none!important;
+  padding:20px!important;
+}
+.quiz-question legend{color:#25324a;font-size:1rem}
+.quiz-choice{
+  transition:.15s ease;
+  background:#fff;
+  border:1px solid var(--edu-border)!important;
+}
+.quiz-choice:hover{border-color:#9ab8ea!important;background:#f8fbff}
+.quiz-choice:has(input:checked){
+  border-color:var(--edu-blue)!important;
+  background:var(--edu-blue-soft)!important;
+  box-shadow:0 0 0 1px var(--edu-blue) inset;
+}
+.quiz-choice input{accent-color:var(--edu-blue)}
+.quiz-btn{
+  background:var(--edu-blue)!important;
+  border-radius:8px!important;
+  padding:11px 18px!important;
+  box-shadow:none!important;
+}
+.quiz-btn:hover{background:var(--edu-blue-dark)!important}
+.quiz-btn.secondary{background:#fff!important;color:var(--edu-blue)!important;border:1px solid var(--edu-blue)!important}
+.quiz-result{border-radius:10px!important;background:var(--edu-blue-soft)!important}
+
+/* Completion */
+.complete{
+  display:flex;align-items:center;gap:10px;
+  padding:16px;border:1px solid #b8cff5;
+  border-radius:10px;background:#f7fbff;
+}
+.complete input{width:18px;height:18px;accent-color:var(--edu-blue)}
+
+/* Footer */
+.footer{border-top:1px solid var(--edu-border);background:#fff;color:#64748b;padding:26px 0}
+
+/* Responsive */
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr;gap:20px}
+  .sidebar{position:static;max-height:none;display:flex;gap:6px;overflow:auto;white-space:nowrap}
+  .sidebar strong{display:none}
+  .sidebar a{flex:0 0 auto;border-left:0;border-bottom:3px solid transparent}
+  .sidebar a:hover{border-bottom-color:var(--edu-blue)}
+  .lesson{padding:26px 22px}
+  .lesson-head{padding:30px 24px}
+}
+@media(max-width:650px){
+  .shell{width:min(100% - 24px,1220px)}
+  .nav{min-height:60px}
+  .navlinks{display:none}
+  .brand{font-size:.95rem}
+  .lesson{padding:22px 17px;border-radius:12px}
+  .lesson-head{border-radius:14px}
+  .lesson-nav{overflow-x:auto;flex-wrap:nowrap}
+  .lesson-nav a{white-space:nowrap}
+}
+</style>
+
+</head><body>
 <header class="topbar"><div class="shell nav"><a class="brand" href="index.html"><span class="logo">W</span><span>Microsoft 365 Learning Hub</span></a><nav class="navlinks"><a href="index.html#cours">Cours</a><a href="exercices.html">Exercices</a><a href="ressources.html">Ressources</a></nav></div></header>
-<main class="shell layout"><aside class="sidebar"><strong>Cours 00</strong><a href="#intro">1. Découvrir Word</a><a href="#connexion">2. Se connecter</a><a href="#installer">3. Installer Microsoft 365</a><a href="#activer">4. Activer et ouvrir Word</a><a href="#creer">5. Créer un document</a><a href="#ouvrir">6. Ouvrir un fichier</a><a href="#interface">7. Interface</a><a href="#enregistrer">8. Enregistrer</a><a href="#retrouver">9. Fermer et retrouver</a><a href="#tp">10. TP guidé</a><a href="#autonomie">11. Exercice</a><a href="#references">12. Références</a></aside>
-<article><header class="lesson-head"><div class="course-no" style="color:#dbe5ff">COURS 00 • DÉMARRAGE</div><h1>Prise en main de Microsoft Word</h1><p>De la connexion à Microsoft 365 jusqu’au premier document Word : téléchargement, installation, activation, ouverture, enregistrement et organisation des fichiers.</p><div class="progress"><span></span></div><p data-progress-text></p></header>
-<div class="lesson-nav"><a href="#connexion">Connexion</a><a href="#installer">Installation</a><a href="#activer">Activation</a><a href="#creer">Nouveau document</a><a href="#interface">Interface</a><a href="#tp">TP</a></div>
-<section class="lesson" id="intro"><span class="badge">00 • AVANT DE COMMENCER</span><h2>Microsoft 365 et Microsoft Word</h2><p><strong>Microsoft Word</strong> est l’application de traitement de texte de Microsoft 365. Elle permet de créer des lettres, rapports, CV, travaux scolaires et documents professionnels, puis de les enregistrer, imprimer, partager ou exporter en PDF.</p><div class="two-col"><div class="callout"><strong>Word pour le web</strong><br>Utilisable directement dans un navigateur après connexion à Microsoft 365. Aucune installation locale de Word n’est nécessaire.</div><div class="tip"><strong>Application Word</strong><br>Installée sur Windows ou macOS. Elle donne accès aux fonctions de bureau et permet aussi de travailler avec des fichiers locaux.</div></div><div class="callout"><strong>Important — licence :</strong> la possibilité d’installer les applications dépend du type de licence associé au compte. La documentation de l’Université de Lausanne signale notamment que certaines licences donnent uniquement accès à Microsoft 365 en ligne.</div></section>
-<section class="lesson" id="connexion"><span class="badge">01 • CONNEXION</span><h2>Étape 1 — Se connecter au portail Microsoft 365</h2><p>Avant d’installer ou d’utiliser Word en ligne, connectez-vous au portail Microsoft avec le compte fourni par votre établissement ou votre organisation.</p><div class="steps"><div class="step"><strong>Ouvrez un navigateur</strong> : Edge, Chrome, Firefox ou Safari.</div><div class="step">Accédez au <strong>portail Microsoft 365</strong> puis choisissez <strong>Se connecter</strong>.</div><div class="step">Saisissez votre <strong>adresse institutionnelle, professionnelle ou scolaire</strong>. Dans la référence UNIL, l’exemple utilisé est une adresse <code>@unil.ch</code>.</div><div class="step">Cliquez sur <strong>Suivant</strong>, puis saisissez le mot de passe associé au compte.</div><div class="step">Effectuez la vérification de sécurité ou l’authentification multifacteur si elle est demandée.</div></div><div class="ui-shot"><div class="ui-browser"><span></span><span></span><span></span><div class="ui-address">portal.office.com</div></div><div class="ui-stage"><div class="ui-panel"><div class="ms-mark">M</div><h3>Se connecter</h3><p>Compte professionnel ou scolaire</p><div class="ui-field">prenom.nom@etablissement.ca</div><div class="ui-button">Suivant</div></div></div><div class="visual-caption">Repère pédagogique inspiré de l’écran de connexion Microsoft. La référence UNIL montre la même étape avec une adresse @unil.ch.</div></div><div class="tip"><strong>Capture de référence :</strong> la documentation UNIL illustre cette étape par l’écran Microsoft « Se connecter » avec le bouton <strong>Suivant</strong>. <a href="https://wiki.unil.ch/ci/books/distribution-de-logiciels/page/microsoft-365" target="_blank" rel="noopener">Voir la capture originale et la procédure UNIL ↗</a></div></section>
-<section class="lesson" id="installer"><span class="badge">02 • INSTALLATION</span><h2>Étape 2 — Télécharger et installer Microsoft 365</h2><p>Après la connexion, recherchez l’option d’installation des applications. La documentation UNIL utilise le bouton <strong>« Installer Office »</strong>. Si ce bouton n’est pas disponible, votre licence peut être limitée aux applications en ligne.</p><div class="tip"><strong>Repère visuel de la référence :</strong> l’écran « Office apps &amp; devices » montre le bouton <strong>Install Office</strong>. <a href="https://wiki.unil.ch/ci/books/distribution-de-logiciels/page/microsoft-365" target="_blank" rel="noopener">Voir la capture originale UNIL ↗</a></div><div class="two-col"><div class="mini-card"><h3>Windows</h3><div class="steps"><div class="step">Cliquez sur <strong>Installer Office</strong> et téléchargez le programme d’installation.</div><div class="step">Ouvrez le fichier téléchargé.</div><div class="step">Si Windows affiche le contrôle de compte d’utilisateur, cliquez sur <strong>Oui</strong>.</div><div class="step">Restez connecté à Internet pendant le téléchargement et l’installation des applications.</div><div class="step">Lorsque le message indique que l’installation est terminée, cliquez sur <strong>Fermer</strong>.</div></div><p><a href="https://wiki.unil.ch/ci/books/distribution-de-logiciels/page/microsoft-365" target="_blank" rel="noopener">Captures Windows originales : autorisation, installation et fin d’installation ↗</a></p></div><div class="mini-card"><h3>macOS</h3><div class="steps"><div class="step">Cliquez sur <strong>Installer Office</strong> puis ouvrez le fichier d’installation téléchargé.</div><div class="step">Dans l’assistant, cliquez sur <strong>Continuer</strong>.</div><div class="step">Lisez les conditions, cliquez sur <strong>Continuer</strong>, puis sur <strong>Accepter</strong>.</div><div class="step">Cliquez sur <strong>Installer</strong>.</div><div class="step">Saisissez le mot de passe de votre session macOS si le système le demande, puis validez.</div><div class="step">À la fin, cliquez sur <strong>Fermer</strong>. Vous pouvez ensuite déplacer l’installeur dans la corbeille.</div></div><p><a href="https://wiki.unil.ch/ci/books/distribution-de-logiciels/page/microsoft-365" target="_blank" rel="noopener">Captures macOS originales : Continuer, Accepter, Installer et Fermer ↗</a></p></div></div><div class="callout"><strong>Linux :</strong> la référence UNIL indique qu’il n’y a pas d’application Microsoft 365 de bureau à installer pour Linux ; les outils Microsoft en ligne peuvent être utilisés depuis un navigateur.</div></section>
-<section class="lesson" id="activer"><span class="badge">03 • ACTIVATION</span><h2>Étape 3 — Ouvrir Word et activer Microsoft 365</h2>
-<p>Après l’installation de Microsoft 365, ouvrez Word puis associez l’application à votre compte institutionnel. Les captures ci-dessous proviennent de la procédure Microsoft 365 du Centre informatique de l’Université de Lausanne (UNIL). L’apparence peut varier selon la version installée.</p>
+<main class="shell layout"><aside class="sidebar"><strong>Cours 00</strong><a href="#intro">1. Découvrir Word</a><a href="#installer">2. Installer Microsoft 365</a><a href="#connexion">3. Se connecter dans Word</a><a href="#activer">4. Activer et ouvrir Word</a><a href="#creer">5. Créer un document</a><a href="#ouvrir">6. Ouvrir un fichier</a><a href="#interface">7. Interface</a><a href="#enregistrer">8. Enregistrer</a><a href="#retrouver">9. Fermer et retrouver</a><a href="#tp">10. TP guidé</a><a href="#quiz">11. Quiz</a><a href="#autonomie">12. Exercice</a><a href="#references">12. Références</a></aside>
+<article><header class="lesson-head"><div class="course-no" style="color:#dbe5ff">COURS 00 • DÉMARRAGE</div><h1>Prise en main de Microsoft Word</h1><p>De l’installation de Microsoft 365 jusqu’au premier document Word : installation, connexion, activation, ouverture, enregistrement et organisation des fichiers.</p><div class="progress"><span></span></div><p data-progress-text></p></header>
+<div class="lesson-nav"><a href="#installer">Installation</a><a href="#connexion">Connexion</a><a href="#activer">Activation</a><a href="#creer">Nouveau document</a><a href="#interface">Interface</a><a href="#tp">TP</a><a href="#quiz">Quiz</a></div>
+<section class="lesson" id="intro"><span class="badge">00 • AVANT DE COMMENCER</span><h2>Microsoft 365 et Microsoft Word</h2>
+<p><strong>Microsoft Word</strong> fait partie des applications Microsoft 365 proposées avec les licences qui incluent les applications de bureau. Pour installer et activer Microsoft 365 Apps, l’utilisateur doit disposer d’une licence appropriée et se connecter avec le compte associé.</p>
+<div class="two-col"><div class="callout"><strong>Compte et licence</strong><br>Dans un environnement professionnel ou scolaire, l’organisation attribue la licence Microsoft 365 Apps à l’utilisateur. Sans licence appropriée, l’installation des applications Microsoft 365 n’est pas proposée.</div><div class="tip"><strong>Activation</strong><br>Microsoft 365 Apps utilise une activation liée à l’utilisateur et aux services Microsoft dans le cloud. Une connexion à Internet est nécessaire périodiquement pour conserver l’activation.</div></div>
+<div class="callout"><strong>À retenir :</strong> l’installation des applications de bureau dépend de la licence attribuée au compte. Ce cours utilise uniquement la documentation Microsoft Learn comme référence technique.</div></section>
+<section class="lesson" id="installer"><span class="badge">01 • INSTALLATION</span><h2>Étape 1 — Installer les applications Microsoft 365</h2>
+<p>Commencez par installer les applications Microsoft 365 sur votre ordinateur. Microsoft Learn indique que la procédure Windows commence par une connexion à Microsoft 365 avec votre <strong>compte professionnel</strong>, puis par le téléchargement du programme d’installation.</p>
 
-<h3>3.1 — Ouvrir Microsoft Word sous Windows</h3>
-<div class="steps"><div class="step">Cliquez sur le bouton <strong>Démarrer</strong> de Windows.</div><div class="step">Recherchez <strong>Word</strong> dans la liste des applications ou dans la zone de recherche.</div><div class="step">Cliquez sur <strong>Word</strong> pour lancer l’application.</div></div>
-<figure class="reference-shot"><img src="assets/images/course00/unil/01-ouvrir-word-windows.png" alt="Menu Démarrer de Windows avec Microsoft Word"><figcaption><strong>Capture 1 — Ouvrir Word depuis le menu Démarrer.</strong> Source : Centre informatique, Université de Lausanne (UNIL), « Microsoft 365 — Distribution de logiciels ». <a href="https://wiki.unil.ch/ci/books/distribution-de-logiciels/page/microsoft-365" target="_blank" rel="noopener">Consulter la source ↗</a></figcaption></figure>
+<div class="learn-video">
+<h3>▶ Regarder : Installer les applications Microsoft 365</h3>
+<p>Cette vidéo officielle Microsoft Learn montre comment installer les applications Microsoft 365 sur un appareil Windows.</p>
+<div class="video-frame"><iframe src="https://learn-video.azurefd.net/vod/player?id=dc089097-90e3-4e20-a10b-985e58240101" title="Microsoft Learn — Installer les applications Microsoft 365" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+<p class="video-note">Vidéo intégrée depuis Microsoft Learn. Si le lecteur ne s’affiche pas dans votre navigateur, utilisez le lien Microsoft Learn ci-dessous.</p>
+</div>
 
-<h3>3.2 — Confirmer le compte utilisé pour activer Office</h3>
-<p>Au premier démarrage, Office peut afficher un écran de bienvenue avec le compte détecté. Vérifiez l’adresse avant de continuer.</p>
-<div class="steps"><div class="step">Vérifiez que l’adresse correspond à votre <strong>compte institutionnel ou professionnel</strong>.</div><div class="step">Si le compte est correct, cliquez sur <strong>Continuer</strong>.</div><div class="step">Sinon, choisissez <strong>Modifier le compte</strong>.</div></div>
-<figure class="reference-shot"><img src="assets/images/course00/unil/02-bienvenue-office.png" alt="Écran de bienvenue Microsoft Office"><figcaption><strong>Capture 2 — Écran de bienvenue et choix du compte.</strong> L’adresse <code>@unil.ch</code> est un exemple propre à l’UNIL ; utilisez l’adresse fournie par votre établissement. Source : Centre informatique, Université de Lausanne (UNIL). <a href="https://wiki.unil.ch/ci/books/distribution-de-logiciels/page/microsoft-365" target="_blank" rel="noopener">Source ↗</a></figcaption></figure>
+<h3>1.1 — Se connecter pour télécharger Microsoft 365 Apps</h3>
+<div class="steps"><div class="step">Accédez à <strong>Microsoft 365 Apps</strong> dans votre navigateur.</div><div class="step">Connectez-vous avec votre <strong>compte professionnel</strong>.</div><div class="step">Dans le coin supérieur droit, sélectionnez <strong>Installer des applications</strong>, puis <strong>Applications Microsoft 365</strong>.</div></div>
 
-<h3>3.3 — Saisir ou confirmer l’adresse de connexion</h3>
-<div class="steps"><div class="step">Saisissez votre <strong>adresse institutionnelle</strong>.</div><div class="step">Cliquez sur <strong>Suivant</strong>.</div><div class="step">Si Microsoft le demande, utilisez le compte <strong>professionnel ou scolaire</strong> associé à votre établissement.</div></div>
-<figure class="reference-shot"><img src="assets/images/course00/unil/03-activer-office-compte.png" alt="Fenêtre Activer Office avec le bouton Suivant"><figcaption><strong>Capture 3 — Saisie du compte pour activer Office.</strong> Source : Centre informatique, Université de Lausanne (UNIL). <a href="https://wiki.unil.ch/ci/books/distribution-de-logiciels/page/microsoft-365" target="_blank" rel="noopener">Source ↗</a></figcaption></figure>
+<h3>1.2 — Télécharger le programme d’installation</h3>
+<div class="steps"><div class="step">La page <strong>Mon compte</strong> s’ouvre.</div><div class="step">Sous <strong>Applications Office &amp; appareils</strong>, sélectionnez <strong>Installer Office</strong>.</div><div class="step">Le fichier <code>OfficeSetup.exe</code> est téléchargé dans votre dossier <strong>Téléchargements</strong>.</div></div>
 
-<h3>3.4 — Entrer le mot de passe</h3>
-<div class="steps"><div class="step">Saisissez le <strong>mot de passe</strong> du compte.</div><div class="step">Cliquez sur <strong>Se connecter</strong>.</div><div class="step">Effectuez l’authentification multifacteur si votre établissement la demande.</div></div>
-<figure class="reference-shot"><img src="assets/images/course00/unil/04-mot-de-passe.png" alt="Écran Microsoft demandant le mot de passe"><figcaption><strong>Capture 4 — Authentification avec le mot de passe.</strong> Ne communiquez jamais votre mot de passe. Source : Centre informatique, Université de Lausanne (UNIL). <a href="https://wiki.unil.ch/ci/books/distribution-de-logiciels/page/microsoft-365" target="_blank" rel="noopener">Source ↗</a></figcaption></figure>
+<h3>1.3 — Installer les applications</h3>
+<div class="steps"><div class="step">Ouvrez <code>OfficeSetup.exe</code>.</div><div class="step">Lorsque Windows demande si vous souhaitez autoriser l’application à apporter des modifications à votre appareil, sélectionnez <strong>Oui</strong>.</div><div class="step">Attendez la fin de l’installation. Elle peut prendre plusieurs minutes.</div><div class="step">Lorsque la fenêtre indiquant que l’installation est terminée apparaît, sélectionnez <strong>Fermer</strong>.</div><div class="step">Les applications Microsoft 365 sont maintenant disponibles dans le menu <strong>Démarrer</strong>.</div></div>
 
-<h3>3.5 — Accepter le contrat de licence si cet écran apparaît</h3>
-<p>Selon la version installée, Office peut afficher un écran relatif au contrat de licence. Lisez les informations affichées avant de poursuivre.</p>
-<div class="steps"><div class="step">Vérifiez les informations relatives au produit et à la licence.</div><div class="step">Consultez le contrat si nécessaire.</div><div class="step">Cliquez sur <strong>Accepter</strong> pour poursuivre lorsque vous êtes prêt à utiliser Office selon ces conditions.</div></div>
-<figure class="reference-shot"><img src="assets/images/course00/unil/05-contrat-licence.png" alt="Approbation du contrat de licence Microsoft Office"><figcaption><strong>Capture 5 — Approbation du contrat de licence.</strong> Source : Centre informatique, Université de Lausanne (UNIL), « Microsoft 365 — Distribution de logiciels ». <a href="https://wiki.unil.ch/ci/books/distribution-de-logiciels/page/microsoft-365" target="_blank" rel="noopener">Consulter la référence ↗</a></figcaption></figure>
-
-<div class="tip"><strong>À retenir :</strong> les captures UNIL utilisent <code>prenom.nom@unil.ch</code>. Dans ce cours, cette adresse représente simplement le <strong>compte Microsoft 365 fourni par votre établissement ou votre organisation</strong>.</div>
+<div class="tip"><strong>Après l’installation :</strong> ouvrez Microsoft Word. Au premier démarrage, Word peut vous demander de vous connecter. Passez alors à l’<strong>Étape 2 — Se connecter à Microsoft 365 dans Word</strong>, illustrée par les captures ci-dessous.</div>
+<div class="resources"><a href="https://learn.microsoft.com/fr-fr/microsoft-365/admin/setup/install-applications?view=o365-worldwide" target="_blank" rel="noopener">Microsoft Learn — Installer les applications Microsoft 365 ↗</a></div>
 </section>
-<section class="lesson" id="ouvrir-word"><span class="badge">04 • TROIS FAÇONS D’OUVRIR WORD</span><h2>Étape 4 — Accéder à Microsoft Word</h2><div class="three-col"><div class="mini-card"><h3>Windows</h3><p><strong>Démarrer → Word</strong>. Vous pouvez aussi épingler Word à la barre des tâches pour le retrouver plus rapidement.</p></div><div class="mini-card"><h3>macOS</h3><p><strong>Applications → Microsoft Word</strong>, ou utilisez Spotlight avec <span class="kbd">⌘ + Espace</span> puis recherchez « Word ».</p></div><div class="mini-card"><h3>Word pour le web</h3><p>Connectez-vous au portail Microsoft 365 et sélectionnez <strong>Word</strong> parmi les applications disponibles.</p></div></div><div class="callout"><strong>Si vous ne pouvez pas installer Word :</strong> utilisez Word pour le web. C’est également une bonne solution sur un ordinateur où vous ne disposez pas des droits d’installation.</div></section>
-<section class="lesson" id="creer"><span class="badge">05 • NOUVEAU DOCUMENT</span><h2>Créer un document</h2><div class="steps"><div class="step">Dans l’écran d’accueil de Word, choisissez <strong>Document vierge</strong>.</div><div class="step">Cliquez dans la page blanche et commencez à saisir votre texte.</div><div class="step">Donnez rapidement un nom explicite au document, par exemple <strong>TP00_Nom_Prenom.docx</strong>.</div><div class="step">Vérifiez où le document est enregistré : OneDrive ou dossier local.</div></div><div class="ui-shot"><div class="word-home"><div class="word-side"><div class="logo">W</div><strong>Word</strong><span>Accueil</span><span>Nouveau</span><span>Ouvrir</span></div><div class="word-main"><h3>Créer</h3><div class="template-row"><div class="blank-page">+</div><div><strong>Document vierge</strong><p>Commencer un nouveau document</p></div></div><h3>Récents</h3><div class="recent-line"></div><div class="recent-line short"></div></div></div><div class="visual-caption">Repère visuel schématique de la page d’accueil Word.</div></div></section>
+<section class="lesson" id="connexion"><span class="badge">02 • CONNEXION</span><h2>Étape 2 — Se connecter à Microsoft 365 dans Word</h2>
+<p>Lors du premier démarrage de Word, l’application peut demander de vous connecter afin d’associer Word au compte Microsoft utilisé par votre établissement ou votre organisation. Les écrans peuvent varier selon la version de Microsoft 365 et la configuration de l’ordinateur.</p>
+
+<h3>2.1 — Démarrer la connexion dans Word</h3>
+<div class="steps">
+<div class="step">Ouvrez <strong>Microsoft Word</strong>.</div>
+<div class="step">Lorsque l’écran <strong>« Word — Connectez-vous pour démarrer l’utilisation »</strong> apparaît, sélectionnez <strong>Se connecter ou créer un compte</strong>.</div>
+<div class="step">Utilisez le <strong>compte professionnel ou scolaire</strong> auquel votre organisation a attribué la licence Microsoft 365 Apps.</div>
+</div>
+<figure class="course-shot"><img src="assets/images/course00/connexion-word.png" alt="Écran Word demandant de se connecter pour démarrer l’utilisation"><figcaption><strong>Capture 1 — Démarrer la connexion dans Word.</strong> Sélectionnez « Se connecter ou créer un compte » pour associer Word au compte Microsoft 365 utilisé par votre organisation.</figcaption></figure>
+
+<h3>2.2 — Poursuivre la connexion si Windows affiche une confirmation</h3>
+<p>Selon la configuration de votre organisation, Windows peut afficher un écran demandant si vous souhaitez poursuivre la connexion afin d’utiliser le compte avec d’autres applications et services Microsoft.</p>
+<div class="steps">
+<div class="step">Lisez le message affiché à l’écran.</div>
+<div class="step">Pour poursuivre l’association du compte avec les services Microsoft, sélectionnez <strong>Continuer</strong>.</div>
+<div class="step">Terminez ensuite les éventuelles étapes d’authentification demandées par votre organisation.</div>
+</div>
+<figure class="course-shot compact"><img src="assets/images/course00/connexion-continuer.png" alt="Fenêtre demandant Voulez-vous poursuivre la connexion avec les boutons Ne pas me connecter et Continuer"><figcaption><strong>Capture 2 — Confirmation de connexion.</strong> Cet écran peut apparaître selon la configuration Windows et Microsoft 365 de l’établissement.</figcaption></figure>
+
+<h3>2.3 — Vérifier que Word est connecté</h3>
+<p>Après la connexion, Word affiche sa page d’accueil. Le compte connecté apparaît généralement dans la partie supérieure de la fenêtre. Vous pouvez alors créer un nouveau document ou ouvrir un document existant.</p>
+<div class="steps">
+<div class="step">Vérifiez que votre <strong>nom ou compte</strong> apparaît dans Word.</div>
+<div class="step">Pour commencer un nouveau travail, sélectionnez <strong>Document vierge</strong>.</div>
+<div class="step">Si le compte affiché n’est pas celui attendu, vérifiez le compte avant de commencer à travailler.</div>
+</div>
+<figure class="course-shot"><img src="assets/images/course00/accueil-word-connecte.png" alt="Page d’accueil de Microsoft Word avec le compte connecté en haut de la fenêtre"><figcaption><strong>Capture 3 — Word après la connexion.</strong> La page d’accueil permet notamment de créer un « Document vierge » et de vérifier le compte connecté.</figcaption></figure>
+
+<div class="tip"><strong>Important :</strong> Microsoft Learn indique que Microsoft 365 Apps doit être associé à un utilisateur disposant d’une licence appropriée. Les options visibles pendant la connexion peuvent différer selon les paramètres définis par votre organisation.</div>
+<div class="resources"><a href="https://learn.microsoft.com/fr-fr/microsoft-365-apps/licensing-activation/overview-licensing-activation-microsoft-365-apps" target="_blank" rel="noopener">Microsoft Learn — Licences et activation de Microsoft 365 Apps ↗</a></div>
+</section>
+<section class="lesson" id="activer"><span class="badge">03 • ACTIVATION</span><h2>Étape 3 — Ouvrir Word et activer Microsoft 365 Apps</h2>
+<p>Avec le mode de licence utilisateur par abonnement, l’activation de Microsoft 365 Apps est associée à l’utilisateur. Microsoft Learn indique que l’utilisateur se connecte avec son compte Microsoft Entra associé à la licence.</p>
+<div class="steps"><div class="step">Sous Windows, ouvrez le menu <strong>Démarrer</strong> et sélectionnez <strong>Word</strong>.</div><div class="step">Si Word vous demande de vous connecter, utilisez le <strong>compte professionnel ou scolaire</strong> auquel la licence Microsoft 365 Apps est attribuée.</div><div class="step">Terminez l’authentification demandée par votre organisation.</div><div class="step">Une fois l’utilisateur correctement licencié et connecté, Microsoft 365 Apps communique avec les services de licences et d’activation Microsoft pour activer l’installation.</div></div>
+<div class="tip"><strong>Connexion Internet :</strong> Microsoft Learn précise que Microsoft 365 Apps doit pouvoir se connecter au service de licences au moins une fois tous les 30 jours pour rester entièrement fonctionnel. Après une période prolongée sans validation, les applications peuvent passer en mode de fonctionnalités réduites jusqu’à la prochaine activation.</div>
+<div class="resources"><a href="https://learn.microsoft.com/fr-fr/microsoft-365-apps/licensing-activation/overview-licensing-activation-microsoft-365-apps" target="_blank" rel="noopener">Microsoft Learn — Vue d’ensemble des licences et de l’activation ↗</a></div></section>
+<section class="lesson" id="ouvrir-word"><span class="badge">04 • OUVRIR WORD</span><h2>Étape 4 — Ouvrir Microsoft Word</h2>
+<div class="two-col"><div class="mini-card"><h3>Windows</h3><p>Après l’installation, les applications Microsoft 365 apparaissent dans le menu <strong>Démarrer</strong>. Ouvrez <strong>Démarrer</strong>, recherchez <strong>Word</strong>, puis lancez l’application.</p></div><div class="mini-card"><h3>macOS</h3><p>Après l’installation de Microsoft 365 Apps sur Mac, lancez Microsoft Word depuis les applications de macOS et connectez-vous avec le compte associé à votre licence si Word le demande.</p></div></div>
+<div class="resources"><a href="https://learn.microsoft.com/fr-fr/microsoft-365/admin/setup/install-applications?view=o365-worldwide" target="_blank" rel="noopener">Microsoft Learn — Installation de Microsoft 365 Apps ↗</a></div></section>
+<section class="lesson" id="creer">
+<span class="badge">05 • NOUVEAU DOCUMENT</span>
+<h2>Étape 5 — Créer un nouveau document Word</h2>
+<p>Une fois Word ouvert, vous pouvez créer un nouveau document à partir d’un <strong>document vierge</strong> ou choisir un modèle proposé par Word.</p>
+
+<div class="steps">
+<div class="step">Dans Word, cliquez sur l’onglet <strong>Fichier</strong>.</div>
+<div class="step">Dans le menu situé à gauche, sélectionnez <strong>Nouveau</strong>.</div>
+<div class="step">Choisissez <strong>Document vierge</strong> pour créer un document vide.</div>
+<div class="step">Vous pouvez également sélectionner un modèle proposé ou rechercher un modèle en ligne.</div>
+<div class="step">Une fois le document ouvert, cliquez dans la page et commencez à saisir votre texte.</div>
+</div>
+
+<figure class="course-shot">
+<img src="assets/images/course00/nouveau-document-word.png" alt="Écran Nouveau de Microsoft Word avec l’option Document vierge et plusieurs modèles">
+<figcaption><strong>Créer un nouveau document dans Word.</strong> Dans <strong>Fichier → Nouveau</strong>, sélectionnez <strong>Document vierge</strong> pour commencer avec une page vide, ou choisissez un modèle adapté à votre travail.</figcaption>
+</figure>
+
+<div class="two-col">
+<div class="mini-card"><h3>Document vierge</h3><p>Choisissez cette option lorsque vous souhaitez commencer votre document à partir d’une page vide.</p></div>
+<div class="mini-card"><h3>Modèles</h3><p>Word propose également différents modèles prédéfinis. Vous pouvez sélectionner un modèle affiché ou rechercher un modèle en ligne.</p></div>
+</div>
+
+<div class="tip"><strong>Conseil :</strong> vous pouvez également créer rapidement un nouveau document avec <strong>Ctrl + N</strong> sous Windows ou <strong>Cmd + N</strong> sur Mac.</div>
+
+<div class="callout"><strong>Après la création :</strong> commencez à saisir votre contenu, puis donnez un nom clair au document et enregistrez-le dans le dossier demandé, par exemple <strong>TP00_Nom_Prenom.docx</strong>.</div>
+</section>
 <section class="lesson" id="ouvrir"><span class="badge">06 • OUVRIR UN FICHIER</span><h2>Ouvrir un document Word existant</h2><p>Un document Word porte généralement l’extension <strong>.docx</strong>. Plusieurs méthodes sont possibles.</p><div class="method-grid"><div class="mini-card"><strong>Depuis Word</strong><p><strong>Fichier → Ouvrir</strong>, puis choisissez un document récent, OneDrive ou parcourez les dossiers de l’ordinateur.</p></div><div class="mini-card"><strong>Depuis Finder / Explorateur</strong><p>Localisez le fichier <code>.docx</code> puis double-cliquez dessus. Word s’ouvre avec le document.</p></div><div class="mini-card"><strong>Depuis Word pour le web</strong><p>Sur la page d’accueil, utilisez les fichiers récents ou l’option permettant de charger un fichier.</p></div><div class="mini-card"><strong>Depuis OneDrive</strong><p>Localisez le document dans votre espace OneDrive puis ouvrez-le dans le navigateur ou l’application de bureau.</p></div></div><div class="callout"><strong>Problème fréquent :</strong> si le fichier téléchargé est encore dans <em>Téléchargements</em>, pensez à le déplacer dans votre dossier de cours avant de commencer.</div></section>
-<section class="lesson" id="interface"><span class="badge">07 • SE REPÉRER</span><h2>Comprendre l’interface de Word</h2><p>Avant de mettre en forme un document, repérez les principales zones de travail.</p><div class="word-interface"><div class="wi-title"><span>Enregistrement automatique</span><strong>TP00_Nom_Prenom.docx</strong><span>Partager</span></div><div class="wi-tabs"><b>Fichier</b><b>Accueil</b><span>Insertion</span><span>Mise en page</span><span>Références</span><span>Révision</span><span>Affichage</span></div><div class="wi-ribbon"><div>📋<small>Presse-papiers</small></div><div>G &nbsp; <em>I</em> &nbsp; <u>S</u><small>Police</small></div><div>• Liste &nbsp; ≡ &nbsp; ☰<small>Paragraphe</small></div><div>Normal &nbsp; Titre 1<small>Styles</small></div></div><div class="wi-work"><div class="paper"><h4>Mon premier document</h4><p>Zone de saisie du document…</p></div></div><div class="wi-status">Page 1 sur 1 <span>100% &nbsp; −━━●━━＋</span></div></div><div class="visual-caption">Schéma pédagogique moderne de l’interface. Le Cours 01 détaillera ensuite l’onglet Accueil.</div><div class="chips"><span class="chip">Barre de titre</span><span class="chip">Ruban</span><span class="chip">Onglets</span><span class="chip">Zone de travail</span><span class="chip">Barre d’état</span><span class="chip">Zoom</span></div></section>
-<section class="lesson" id="enregistrer"><span class="badge">08 • ENREGISTRER</span><h2>Enregistrer sans perdre son travail</h2><div class="two-col"><div><h3>Document local</h3><p>Utilisez <span class="kbd">Ctrl+S</span> sous Windows ou <span class="kbd">⌘+S</span> sur Mac. Lors du premier enregistrement, choisissez le dossier et le nom du fichier.</p><p>Pour créer une autre version, utilisez <strong>Enregistrer sous</strong> ou <strong>Enregistrer une copie</strong> selon votre version.</p></div><div><h3>OneDrive / SharePoint</h3><p>Dans Microsoft 365, l’<strong>Enregistrement automatique</strong> peut sauvegarder les modifications automatiquement lorsque le fichier est stocké dans OneDrive ou SharePoint.</p><p>Vérifiez toujours le nom et l’emplacement du fichier.</p></div></div><div class="tip"><strong>Bonne pratique :</strong> utilisez des noms compréhensibles : <code>TP00_Aouichat_Asma.docx</code> est préférable à <code>Document1.docx</code>.</div><h3>Créer une version PDF</h3><p>Le fichier <strong>.docx</strong> reste le document de travail modifiable. Le <strong>.pdf</strong> est utile pour remettre ou partager une version dont la mise en page doit rester stable. Conservez le DOCX original lorsque vous exportez en PDF.</p></section>
+<section class="lesson" id="interface">
+<span class="badge">07 • INTERFACE</span>
+<h2>Comprendre l’interface de Microsoft Word</h2>
+<p>Après avoir ouvert ou créé un document, repérez les principales zones de l’interface Word. La capture ci-dessous identifie huit éléments importants que vous utiliserez régulièrement pendant le cours.</p>
+
+<figure class="course-shot">
+<img src="assets/images/course00/interface-word-annotee.png" alt="Interface de Microsoft Word annotée avec huit repères numérotés">
+<figcaption><strong>Interface de Microsoft Word sous Windows.</strong> Les numéros 1 à 8 correspondent aux éléments expliqués ci-dessous. L’apparence peut varier légèrement selon la version de Word installée.</figcaption>
+</figure>
+
+<div class="method-grid">
+<div class="mini-card"><strong>1 — Barre de titre</strong><p>Affiche le nom du document ouvert et l’application Word. Elle contient également les commandes de la fenêtre.</p></div>
+<div class="mini-card"><strong>2 — Barre d’outils Accès rapide</strong><p>Regroupe des commandes fréquemment utilisées, par exemple Enregistrer, Annuler et Rétablir.</p></div>
+<div class="mini-card"><strong>3 — Onglets du ruban</strong><p>Permettent de passer entre les principaux groupes de commandes : Fichier, Accueil, Insertion, Création, Mise en page, Références, Publipostage, Révision et Affichage.</p></div>
+<div class="mini-card"><strong>4 — Ruban de commandes</strong><p>Présente les outils associés à l’onglet sélectionné. Dans la capture, l’onglet <strong>Affichage</strong> est actif.</p></div>
+<div class="mini-card"><strong>5 — Règles</strong><p>Les règles horizontale et verticale servent de repères pour la mise en page, les retraits et les tabulations.</p></div>
+<div class="mini-card"><strong>6 — Barre de défilement</strong><p>Permet de parcourir le document verticalement lorsqu’il contient davantage de contenu que la zone visible.</p></div>
+<div class="mini-card"><strong>7 — Barre d’état</strong><p>Affiche des informations sur le document, notamment la page active, le nombre de mots et la langue.</p></div>
+<div class="mini-card"><strong>8 — Affichage et zoom</strong><p>Les commandes situées en bas à droite permettent de modifier le mode d’affichage et d’augmenter ou diminuer le niveau de zoom.</p></div>
+</div>
+
+<div class="tip"><strong>À retenir :</strong> pour ce cours, repérez surtout les <strong>onglets du ruban</strong>, le <strong>ruban de commandes</strong>, la <strong>zone du document</strong>, la <strong>barre d’état</strong> et le <strong>zoom</strong>. Le Cours 01 détaillera les commandes de l’onglet Accueil.</div>
+</section>
+<section class="lesson" id="enregistrer">
+<span class="badge">08 • ENREGISTRER</span>
+<h2>Étape 8 — Enregistrer un document Word</h2>
+<p>Après avoir créé ou modifié un document, enregistrez-le régulièrement. Lors du premier enregistrement, choisissez un <strong>nom clair</strong>, le <strong>format du fichier</strong> et l’<strong>emplacement</strong> où vous souhaitez le conserver.</p>
+
+<h3>8.1 — Utiliser « Enregistrer sous »</h3>
+<div class="steps">
+<div class="step">Dans Word, sélectionnez l’onglet <strong>Fichier</strong>.</div>
+<div class="step">Dans le menu de gauche, choisissez <strong>Enregistrer sous</strong>.</div>
+<div class="step">Sélectionnez l’emplacement souhaité, par exemple <strong>OneDrive</strong>, <strong>Ce PC</strong> ou <strong>Parcourir</strong>.</div>
+<div class="step">Saisissez un nom explicite pour votre document, par exemple <strong>TP00_Nom_Prenom.docx</strong>.</div>
+<div class="step">Vérifiez que le type de fichier correspond à un document Word (<strong>.docx</strong>), puis enregistrez le fichier.</div>
+</div>
+
+<figure class="course-shot">
+<img src="assets/images/course00/enregistrer-sous-word.png" alt="Écran Enregistrer sous de Microsoft Word avec OneDrive, Ce PC, Parcourir, le nom du fichier et le type Document Word">
+<figcaption><strong>Capture — Enregistrer sous dans Microsoft Word.</strong> Cet écran permet de choisir l’emplacement du document, de saisir son nom et de vérifier le format du fichier avant l’enregistrement.</figcaption>
+</figure>
+
+<div class="two-col">
+<div class="mini-card"><h3>Nom du fichier</h3><p>Utilisez un nom clair et identifiable, par exemple <code>TP00_Nom_Prenom.docx</code>.</p></div>
+<div class="mini-card"><h3>Emplacement</h3><p>Choisissez soigneusement où enregistrer le document : OneDrive, un dossier local ou le dossier demandé pour le cours.</p></div>
+</div>
+
+<div class="tip"><strong>Conseil :</strong> après le premier enregistrement, utilisez régulièrement <strong>Ctrl + S</strong> sous Windows ou <strong>Cmd + S</strong> sur Mac pour enregistrer rapidement vos modifications.</div>
+<div class="callout"><strong>À vérifier avant de fermer Word :</strong> le document possède le bon nom, il est enregistré au format <strong>.docx</strong> et vous savez dans quel dossier ou emplacement il se trouve.</div>
+</section>
 <section class="lesson" id="retrouver"><span class="badge">09 • ORGANISATION</span><h2>Fermer, retrouver et rouvrir un document</h2><div class="steps"><div class="step">Assurez-vous que le document est enregistré.</div><div class="step">Fermez le document puis Word.</div><div class="step">Rouvrez Word et regardez la liste des documents récents.</div><div class="step">Si nécessaire, utilisez <strong>Ouvrir</strong> et parcourez OneDrive ou vos dossiers.</div><div class="step">Vérifiez le nom du fichier avant de reprendre votre travail.</div></div><div class="callout"><strong>Si Word se ferme accidentellement :</strong> Word dispose aussi de fonctions de récupération. Pour les fichiers Microsoft 365 stockés dans OneDrive/SharePoint, l’enregistrement automatique et l’historique des versions apportent une protection supplémentaire.</div></section>
-<section class="lesson" id="tp"><span class="badge">10 • TP GUIDÉ</span><h2>TP 00 — Mon premier document Word</h2><p><strong>Objectif :</strong> vérifier que vous savez vous connecter, créer, enregistrer, fermer et rouvrir un document.</p><div class="checklist"><label><input type="checkbox"> Je me connecte à Microsoft 365.</label><label><input type="checkbox"> J’ouvre Word.</label><label><input type="checkbox"> Je crée un document vierge.</label><label><input type="checkbox"> Je saisis le titre « Mon premier document Word ».</label><label><input type="checkbox"> J’écris un court paragraphe de présentation.</label><label><input type="checkbox"> J’enregistre sous <strong>TP00_Nom_Prenom.docx</strong>.</label><label><input type="checkbox"> Je ferme le document.</label><label><input type="checkbox"> Je le retrouve et le rouvre.</label><label><input type="checkbox"> J’ajoute une phrase puis j’enregistre.</label><label><input type="checkbox"> Je crée une copie PDF.</label></div><div class="tip"><strong>Critère de réussite :</strong> à la fin, vous devez pouvoir montrer le fichier DOCX modifiable et sa version PDF, tous deux correctement nommés.</div></section>
-<section class="lesson" id="autonomie"><span class="badge">11 • EXERCICE D’AUTONOMIE</span><h2>À vous de jouer</h2><p>Sans reprendre les étapes précédentes, créez un nouveau document nommé <strong>Exercice00_Nom_Prenom.docx</strong>. Saisissez un titre et deux paragraphes, enregistrez-le dans un dossier <strong>Cours Word</strong>, fermez Word, retrouvez le fichier, rouvrez-le et ajoutez la date du jour. Terminez en produisant une version PDF.</p><details class="expected"><summary>Afficher les points à vérifier</summary><div class="tip"><strong>Auto-évaluation :</strong> le nom est correct; le DOCX est dans le bon dossier; le fichier peut être retrouvé après fermeture; la modification est enregistrée; le PDF existe sans remplacer le DOCX.</div></details></section>
-<section class="lesson"><h2>Ressources Microsoft officielles</h2><p>Ces ressources permettent de vérifier les étapes selon la version de Word utilisée :</p><div class="resources"><a href="https://support.microsoft.com/fr-fr/word/training/create-a-document-in-word-for-the-web" target="_blank" rel="noopener">Créer un document dans Word pour le web ↗</a><a href="https://support.microsoft.com/en-us/accounts-billing/subscriptions/sign-in-to-microsoft-365" target="_blank" rel="noopener">Se connecter à Microsoft 365 ↗</a><a href="https://support.microsoft.com/en-us/word/training/save-a-document" target="_blank" rel="noopener">Enregistrer un document ↗</a></div></section>
-<section class="lesson" id="references"><span class="badge">12 • SOURCES</span><h2>Références et crédits</h2><p>Les étapes détaillées de téléchargement, d’installation et d’activation de Microsoft 365 sur Windows et macOS sont adaptées de la documentation publique du <strong>Centre informatique de l’Université de Lausanne (UNIL)</strong>. Les exemples de compte <code>@unil.ch</code> propres à l’UNIL ont été généralisés dans ce cours afin de convenir à d’autres établissements.</p><div class="resources"><a href="https://wiki.unil.ch/ci/books/distribution-de-logiciels/page/microsoft-365" target="_blank" rel="noopener"><strong>Source principale — UNIL :</strong> Microsoft 365, Distribution de logiciels ↗</a><a href="https://portal.office.com/" target="_blank" rel="noopener">Portail Microsoft 365 ↗</a><a href="https://support.microsoft.com/fr-fr/word" target="_blank" rel="noopener">Aide Microsoft Word ↗</a></div><div class="tip"><strong>Crédit des captures reproduites dans ce cours :</strong> Centre informatique, Université de Lausanne (UNIL), page « Microsoft 365 — Distribution de logiciels ». Les captures 1 à 5 de la section Activation sont attribuées individuellement sous chaque image. Les interfaces Microsoft peuvent évoluer et différer de ces captures.</div></section>
+<section class="lesson" id="tp"><span class="badge">10 • TP GUIDÉ</span>
+<h2>TP 00 — Mon premier document Word</h2>
+<p><strong>Objectif :</strong> mettre en pratique les compétences essentielles du Cours 00 : ouvrir Word, identifier l’interface, créer un document, l’enregistrer, le fermer puis le retrouver.</p>
+
+<div class="tp-grid">
+<div class="tp-card"><strong>Durée indicative</strong><p>20 à 30 minutes.</p></div>
+<div class="tp-card"><strong>Fichier attendu</strong><p><code>TP00_Nom_Prenom.docx</code></p></div>
+<div class="tp-card"><strong>Dossier</strong><p>Créez ou utilisez un dossier nommé <strong>Cours Word</strong>.</p></div>
+</div>
+
+<h3>Partie A — Préparer le travail</h3>
+<div class="checklist">
+<label><input type="checkbox"> J’ouvre Microsoft Word et je vérifie que mon compte est connecté.</label>
+<label><input type="checkbox"> Je crée un <strong>Document vierge</strong>.</label>
+<label><input type="checkbox"> Je repère le ruban, les onglets, la zone de travail, la barre d’état et le zoom.</label>
+</div>
+
+<h3>Partie B — Créer le document</h3>
+<div class="steps">
+<div class="step">Saisissez le titre <strong>Mon premier document Word</strong>.</div>
+<div class="step">Sous le titre, saisissez votre <strong>nom et prénom</strong>.</div>
+<div class="step">Ajoutez la <strong>date du jour</strong>.</div>
+<div class="step">Rédigez un court paragraphe de <strong>3 à 5 phrases</strong> présentant votre expérience avec Microsoft Word et ce que vous souhaitez apprendre.</div>
+</div>
+
+<h3>Partie C — Enregistrer et vérifier</h3>
+<div class="checklist">
+<label><input type="checkbox"> J’enregistre le document dans le dossier <strong>Cours Word</strong>.</label>
+<label><input type="checkbox"> Je nomme le fichier <strong>TP00_Nom_Prenom.docx</strong>.</label>
+<label><input type="checkbox"> Je vérifie que le nom du fichier apparaît correctement dans Word.</label>
+<label><input type="checkbox"> Je ferme le document puis Word.</label>
+<label><input type="checkbox"> Je retrouve le fichier depuis son dossier ou les documents récents.</label>
+<label><input type="checkbox"> Je rouvre le document et j’ajoute la phrase <strong>« Document vérifié et rouvert avec succès. »</strong></label>
+<label><input type="checkbox"> J’enregistre de nouveau les modifications.</label>
+</div>
+
+<div class="tip"><strong>Critères de réussite :</strong> le fichier porte le bon nom, se trouve dans le bon dossier, contient le titre, votre identification, la date et le paragraphe demandé. Vous devez également être capable de fermer Word, retrouver le fichier et le rouvrir sans aide.</div>
+</section>
+<section class="lesson" id="quiz"><span class="badge">11 • QUIZ DE COMPRÉHENSION</span>
+<h2>Quiz — Vérifiez votre compréhension du Cours 00</h2>
+<p>Pour chaque question, choisissez <strong>une seule réponse</strong>. Cliquez ensuite sur <strong>Soumettre le quiz</strong> pour obtenir votre score sur 10 et votre pourcentage.</p>
+
+<form id="course00Quiz" class="quiz-box" autocomplete="off">
+
+<div class="quiz-question" data-correct="B"><fieldset><legend>1. Après l’installation de Microsoft 365, Word affiche « Connectez-vous pour démarrer l’utilisation ». Que devez-vous faire ?</legend>
+<label class="quiz-choice"><input type="radio" name="q1" value="A"> Fermer Word et réinstaller Microsoft 365.</label>
+<label class="quiz-choice"><input type="radio" name="q1" value="B"> Sélectionner « Se connecter ou créer un compte ».</label>
+<label class="quiz-choice"><input type="radio" name="q1" value="C"> Créer immédiatement un document vierge sans connexion.</label>
+<label class="quiz-choice"><input type="radio" name="q1" value="D"> Supprimer le compte Windows.</label>
+<span class="quiz-feedback"></span></fieldset></div>
+
+<div class="quiz-question" data-correct="C"><fieldset><legend>2. Votre établissement vous fournit Microsoft 365. Quel compte devez-vous utiliser pour vous connecter à Word ?</legend>
+<label class="quiz-choice"><input type="radio" name="q2" value="A"> N’importe quel compte local Windows.</label>
+<label class="quiz-choice"><input type="radio" name="q2" value="B"> Un compte invité sans licence.</label>
+<label class="quiz-choice"><input type="radio" name="q2" value="C"> Le compte professionnel ou scolaire auquel la licence est attribuée.</label>
+<label class="quiz-choice"><input type="radio" name="q2" value="D"> Un nouveau compte créé uniquement pour le document.</label>
+<span class="quiz-feedback"></span></fieldset></div>
+
+<div class="quiz-question" data-correct="A"><fieldset><legend>3. Vous voulez commencer un nouveau travail dans Word. Quelle option choisissez-vous sur la page d’accueil ?</legend>
+<label class="quiz-choice"><input type="radio" name="q3" value="A"> Document vierge.</label>
+<label class="quiz-choice"><input type="radio" name="q3" value="B"> Documents récents.</label>
+<label class="quiz-choice"><input type="radio" name="q3" value="C"> Fermer Word.</label>
+<label class="quiz-choice"><input type="radio" name="q3" value="D"> Paramètres d’affichage.</label>
+<span class="quiz-feedback"></span></fieldset></div>
+
+<div class="quiz-question" data-correct="D"><fieldset><legend>4. Vous cherchez les commandes liées à l’onglet sélectionné dans Word. Dans quelle partie de l’interface les trouvez-vous ?</legend>
+<label class="quiz-choice"><input type="radio" name="q4" value="A"> La barre d’état.</label>
+<label class="quiz-choice"><input type="radio" name="q4" value="B"> La barre de défilement.</label>
+<label class="quiz-choice"><input type="radio" name="q4" value="C"> La barre de titre.</label>
+<label class="quiz-choice"><input type="radio" name="q4" value="D"> Le ruban de commandes.</label>
+<span class="quiz-feedback"></span></fieldset></div>
+
+<div class="quiz-question" data-correct="B"><fieldset><legend>5. Vous voulez connaître le nombre de mots et vérifier la page active. Où regardez-vous ?</legend>
+<label class="quiz-choice"><input type="radio" name="q5" value="A"> La règle horizontale.</label>
+<label class="quiz-choice"><input type="radio" name="q5" value="B"> La barre d’état.</label>
+<label class="quiz-choice"><input type="radio" name="q5" value="C"> Le ruban.</label>
+<label class="quiz-choice"><input type="radio" name="q5" value="D"> La barre de titre.</label>
+<span class="quiz-feedback"></span></fieldset></div>
+
+<div class="quiz-question" data-correct="C"><fieldset><legend>6. Le texte est trop petit à l’écran, mais vous ne voulez pas modifier sa taille réelle dans le document. Quelle commande utilisez-vous ?</legend>
+<label class="quiz-choice"><input type="radio" name="q6" value="A"> Enregistrer.</label>
+<label class="quiz-choice"><input type="radio" name="q6" value="B"> La barre de défilement.</label>
+<label class="quiz-choice"><input type="radio" name="q6" value="C"> Le zoom.</label>
+<label class="quiz-choice"><input type="radio" name="q6" value="D"> La règle.</label>
+<span class="quiz-feedback"></span></fieldset></div>
+
+<div class="quiz-question" data-correct="A"><fieldset><legend>7. Pourquoi faut-il donner rapidement un nom clair au document et vérifier son emplacement ?</legend>
+<label class="quiz-choice"><input type="radio" name="q7" value="A"> Pour pouvoir retrouver et rouvrir facilement le fichier.</label>
+<label class="quiz-choice"><input type="radio" name="q7" value="B"> Pour modifier automatiquement le ruban Word.</label>
+<label class="quiz-choice"><input type="radio" name="q7" value="C"> Pour augmenter le niveau de zoom.</label>
+<label class="quiz-choice"><input type="radio" name="q7" value="D"> Pour changer le compte Microsoft connecté.</label>
+<span class="quiz-feedback"></span></fieldset></div>
+
+<div class="quiz-question" data-correct="D"><fieldset><legend>8. Quel nom respecte la consigne d’enregistrement du TP 00 ?</legend>
+<label class="quiz-choice"><input type="radio" name="q8" value="A"> Document1.txt</label>
+<label class="quiz-choice"><input type="radio" name="q8" value="B"> MonWord.pdf</label>
+<label class="quiz-choice"><input type="radio" name="q8" value="C"> TP00.doc</label>
+<label class="quiz-choice"><input type="radio" name="q8" value="D"> TP00_Nom_Prenom.docx</label>
+<span class="quiz-feedback"></span></fieldset></div>
+
+<div class="quiz-question" data-correct="B"><fieldset><legend>9. Vous avez fermé Word et devez continuer votre TP. Quelle démarche correspond au cours ?</legend>
+<label class="quiz-choice"><input type="radio" name="q9" value="A"> Créer obligatoirement un nouveau fichier.</label>
+<label class="quiz-choice"><input type="radio" name="q9" value="B"> Retrouver le document dans les fichiers récents ou dans son dossier, puis le rouvrir.</label>
+<label class="quiz-choice"><input type="radio" name="q9" value="C"> Réinstaller Word avant de continuer.</label>
+<label class="quiz-choice"><input type="radio" name="q9" value="D"> Modifier le fichier sans l’ouvrir.</label>
+<span class="quiz-feedback"></span></fieldset></div>
+
+<div class="quiz-question" data-correct="C"><fieldset><legend>10. Après avoir rouvert le document du TP et ajouté la phrase demandée, quelle action est nécessaire ?</legend>
+<label class="quiz-choice"><input type="radio" name="q10" value="A"> Fermer immédiatement l’ordinateur.</label>
+<label class="quiz-choice"><input type="radio" name="q10" value="B"> Renommer Word.</label>
+<label class="quiz-choice"><input type="radio" name="q10" value="C"> Enregistrer de nouveau les modifications.</label>
+<label class="quiz-choice"><input type="radio" name="q10" value="D"> Supprimer le document précédent.</label>
+<span class="quiz-feedback"></span></fieldset></div>
+
+<div class="quiz-actions">
+<button class="quiz-btn" type="submit">Soumettre le quiz</button>
+<button class="quiz-btn secondary" type="button" id="resetQuiz">Recommencer</button>
+</div>
+<div id="quizResult" class="quiz-result" hidden aria-live="polite"></div>
+</form>
+</section>
+<section class="lesson" id="autonomie"><span class="badge">12 • EXERCICE D’AUTONOMIE</span><h2>À vous de jouer</h2><p>Sans reprendre les étapes précédentes, créez un nouveau document nommé <strong>Exercice00_Nom_Prenom.docx</strong>. Saisissez un titre et deux paragraphes, enregistrez-le dans un dossier <strong>Cours Word</strong>, fermez Word, retrouvez le fichier, rouvrez-le et ajoutez la date du jour. Terminez en produisant une version PDF.</p><details class="expected"><summary>Afficher les points à vérifier</summary><div class="tip"><strong>Auto-évaluation :</strong> le nom est correct; le DOCX est dans le bon dossier; le fichier peut être retrouvé après fermeture; la modification est enregistrée; le PDF existe sans remplacer le DOCX.</div></details></section>
+<section class="lesson"><h2>Ressources Microsoft Learn</h2><p>Les procédures techniques de ce cours sont vérifiées à partir de Microsoft Learn.</p><div class="resources"><a href="https://learn.microsoft.com/fr-fr/microsoft-365/admin/setup/install-applications?view=o365-worldwide" target="_blank" rel="noopener">Installer les applications Microsoft 365 ↗</a><a href="https://learn.microsoft.com/fr-fr/microsoft-365-apps/licensing-activation/overview-licensing-activation-microsoft-365-apps" target="_blank" rel="noopener">Licences et activation de Microsoft 365 Apps ↗</a></div></section>
+<section class="lesson" id="references"><span class="badge">13 • SOURCES</span><h2>Références</h2>
+<p>Cette version du Cours 00 utilise <strong>uniquement Microsoft Learn</strong> comme source externe pour les informations relatives à l’installation, aux licences et à l’activation de Microsoft 365 Apps. Les anciennes références et captures provenant de sources tierces ont été retirées.</p>
+
 <section class="lesson" data-course="demarrage"><label class="complete"><input type="checkbox"> <strong>Marquer le Cours 00 comme terminé</strong></label></section>
-<div class="lesson-nav"><a href="index.html">← Accueil</a><a href="cours-accueil.html">Cours 01 — Accueil et mise en forme →</a></div>
-</article></main><footer class="footer"><div class="shell">Microsoft 365 Learning Hub • Cours Word • A. Aouichat</div></footer><script src="assets/js/app.js"></script></body></html>
+<div class="lesson-nav"><a href="index-word.html">← Accueil</a><a href="cours-accueil.html">Cours 01 — Accueil et mise en forme →</a></div>
+</article></main><footer class="footer"><div class="shell">Microsoft 365 Learning Hub • Cours Word • A. Aouichat</div></footer><script src="assets/js/app.js"></script>
+
+
+<script>
+(function(){
+  const form=document.getElementById('course00Quiz');
+  if(!form)return;
+  const result=document.getElementById('quizResult');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    const questions=[...form.querySelectorAll('.quiz-question')];
+    let score=0, unanswered=0;
+    questions.forEach((box,i)=>{
+      const selected=box.querySelector('input[type="radio"]:checked');
+      const feedback=box.querySelector('.quiz-feedback');
+      if(!selected){
+        unanswered++;
+        feedback.textContent='Veuillez choisir une réponse.';
+        feedback.className='quiz-feedback no';
+        return;
+      }
+      if(selected.value===box.dataset.correct){
+        score++;
+        feedback.textContent='✓ Bonne réponse.';
+        feedback.className='quiz-feedback ok';
+      }else{
+        const correct=box.querySelector('input[value="'+box.dataset.correct+'"]').parentElement.textContent.trim();
+        feedback.textContent='✗ Réponse attendue : '+correct;
+        feedback.className='quiz-feedback no';
+      }
+    });
+    const percent=Math.round(score/questions.length*100);
+    let message=percent>=80?'Très bien : vous avez compris les notions essentielles du Cours 00.'
+      :percent>=60?'Bon travail : révisez les questions incorrectes avant de poursuivre.'
+      :'Reprenez les sections correspondantes du cours, puis recommencez le quiz.';
+    result.innerHTML='<strong>Score : '+score+'/'+questions.length+' — '+percent+' %</strong>'
+      +(unanswered?'<br>Questions sans réponse : '+unanswered+'.':'')+'<br>'+message;
+    result.hidden=false;
+    result.scrollIntoView({behavior:'smooth',block:'nearest'});
+    try{localStorage.setItem('m365-course00-quiz-score',String(score));}catch(err){}
+  });
+  const reset=document.getElementById('resetQuiz');
+  if(reset)reset.addEventListener('click',function(){
+    form.reset();
+    form.querySelectorAll('.quiz-feedback').forEach(el=>{el.textContent='';el.className='quiz-feedback';});
+    result.hidden=true;
+  });
+})();
+</script>
+</body></html>

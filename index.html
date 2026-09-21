@@ -1,11 +1,116 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Microsoft 365 Learning Hub</title><link rel="stylesheet" href="assets/css/style.css"></head><body><header class="topbar"><div class="shell nav"><a class="brand" href="index.html"><span class="logo">W</span><span>Microsoft 365 Learning Hub</span></a><nav class="navlinks"><a href="index.html#cours">Cours</a><a href="exercices.html">Exercices</a><a href="ressources.html">Ressources</a></nav></div></header>
-<section class="hero"><div class="shell"><span class="badge">MICROSOFT WORD • PARCOURS COMPLET</span><h1>Apprendre Word, <span class="gradient">étape par étape.</span></h1><p class="lead">Un site pédagogique construit à partir des supports de cours fournis : mise en forme, insertion, mise en page, références, révision et publipostage.</p><div class="actions"><a class="btn primary" href="#cours">Commencer</a><a class="btn" href="exercices.html">Voir les exercices</a></div><div class="progress"><span></span></div><p data-progress-text></p></div></section>
-<section class="section" id="cours"><div class="shell"><h2>Votre parcours</h2><p class="section-intro">Sept modules progressifs, de la prise en main de Word jusqu’au publipostage.</p><div class="grid"><article class="card"><div class="course-icon">▶</div><div class="course-no">COURS 00</div><h3>Prise en main de Word</h3><p>Se connecter à Microsoft 365, ouvrir Word, créer ou ouvrir un fichier, enregistrer et retrouver son travail.</p><a class="link" href="cours-00-demarrage.html">Commencer ici →</a></article>
-<article class="card"><div class="course-icon">A</div><div class="course-no">COURS 01</div><h3>Accueil & mise en forme</h3><p>Maîtriser les outils essentiels de mise en forme du texte et des paragraphes.</p><a class="link" href="cours-accueil.html">Ouvrir le module →</a></article>
-<article class="card"><div class="course-icon">+</div><div class="course-no">COURS 02</div><h3>Insertion</h3><p>Insérer et organiser tableaux, formes, images, en-têtes, pieds de page et SmartArt.</p><a class="link" href="cours-insertion.html">Ouvrir le module →</a></article>
-<article class="card"><div class="course-icon">▤</div><div class="course-no">COURS 03</div><h3>Mise en page</h3><p>Configurer marges, orientation, colonnes, sauts de page et sections.</p><a class="link" href="cours-mise-en-page.html">Ouvrir le module →</a></article>
-<article class="card"><div class="course-icon">R</div><div class="course-no">COURS 04</div><h3>Références</h3><p>Créer tables des matières et illustrations, notes, citations et bibliographie.</p><a class="link" href="cours-references.html">Ouvrir le module →</a></article>
-<article class="card"><div class="course-icon">✓</div><div class="course-no">COURS 05</div><h3>Révision</h3><p>Suivre, afficher, accepter et refuser les modifications d’un document.</p><a class="link" href="cours-revision.html">Ouvrir le module →</a></article>
-<article class="card"><div class="course-icon">✉</div><div class="course-no">COURS 06</div><h3>Publipostage</h3><p>Fusionner une lettre-type et une source de données pour produire des documents personnalisés.</p><a class="link" href="cours-publipostage.html">Ouvrir le module →</a></article></div></div></section>
-<section class="section"><div class="shell"><div class="card"><h2>Mode d’emploi</h2><p>Ouvrez un module, étudiez les sections, réalisez l’activité pratique puis marquez le module comme terminé. La progression est enregistrée localement dans votre navigateur.</p></div></div></section>
-<footer class="footer"><div class="shell">Support pédagogique Microsoft Word • A. Aouichat • Site statique prêt pour GitHub Pages.</div></footer><script src="assets/js/app.js"></script></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Microsoft 365 Learning Hub — parcours de formation progressifs pour Word, PowerPoint, Excel et les outils Microsoft 365.">
+<title>Microsoft 365 Learning Hub</title>
+<style>
+:root{
+ --blue:#0056d2;--blue-dark:#003f9e;--ink:#17223b;--muted:#667085;--bg:#f6f8fb;
+ --surface:#fff;--line:#e3e8ef;--soft:#eef5ff;--green:#107c41;--orange:#d24726;
+ --purple:#7719aa;--cyan:#0078d4;--radius:16px;--shadow:0 12px 34px rgba(20,32,58,.08)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6}
+a{color:inherit}.shell{width:min(1200px,calc(100% - 40px));margin:auto}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:800}
+.brandmark{display:grid;grid-template-columns:repeat(2,14px);grid-template-rows:repeat(2,14px);gap:2px}
+.brandmark i{display:block}.brandmark i:nth-child(1){background:#f25022}.brandmark i:nth-child(2){background:#7fba00}.brandmark i:nth-child(3){background:#00a4ef}.brandmark i:nth-child(4){background:#ffb900}
+.navlinks{display:flex;gap:5px}.navlinks a{text-decoration:none;padding:9px 11px;border-radius:8px;color:#475467;font-weight:650}.navlinks a:hover{background:var(--soft);color:var(--blue)}
+.hero{padding:86px 0 72px;background:linear-gradient(120deg,#f8fbff 0%,#fff 54%,#eaf3ff 100%);border-bottom:1px solid var(--line);overflow:hidden;position:relative}
+.hero:after{content:"";position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(0,86,210,.055);right:-180px;top:-220px}
+.hero .shell{position:relative;z-index:1}.eyebrow{display:inline-flex;padding:7px 11px;border-radius:999px;background:var(--soft);color:var(--blue);border:1px solid #cadefb;font-weight:800;font-size:.76rem;letter-spacing:.055em}
+.hero h1{max-width:850px;font-size:clamp(2.8rem,6vw,5rem);line-height:1.03;letter-spacing:-.055em;margin:18px 0}
+.hero h1 span{color:var(--blue)}.lead{max-width:760px;color:var(--muted);font-size:1.16rem;margin-bottom:28px}
+.actions{display:flex;gap:11px;flex-wrap:wrap}.btn{display:inline-flex;justify-content:center;align-items:center;min-height:46px;padding:0 18px;border-radius:9px;border:1px solid #b8c5d5;background:#fff;text-decoration:none;font-weight:750}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn:hover{box-shadow:0 6px 18px rgba(23,34,59,.08)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);max-width:690px;margin-top:42px;border:1px solid var(--line);border-radius:13px;background:#fff;overflow:hidden}.stat{padding:15px 18px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat strong{display:block;font-size:1.05rem}.stat span{font-size:.85rem;color:var(--muted)}
+.section{padding:68px 0}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:27px}.section h2{font-size:clamp(1.8rem,3vw,2.5rem);letter-spacing:-.035em;margin:0}.section-intro{color:var(--muted);margin:5px 0 0;max-width:700px}
+.learning-path{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 15px rgba(15,23,42,.035);transition:.2s}.product:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.product-top{height:7px;background:var(--blue)}.product.powerpoint .product-top{background:var(--orange)}.product.excel .product-top{background:var(--green)}
+.product-body{padding:24px}.app-icon{width:50px;height:50px;border-radius:11px;display:grid;place-items:center;background:var(--blue);color:#fff;font-size:1.4rem;font-weight:850;margin-bottom:17px}.powerpoint .app-icon{background:var(--orange)}.excel .app-icon{background:var(--green)}
+.product h3{font-size:1.35rem;margin:0 0 7px}.product p{color:var(--muted);margin:0 0 20px}.levels{display:grid;gap:8px}.level{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:#fafcff;text-decoration:none;font-size:.92rem;font-weight:700}.level:hover{border-color:#b8cff3;background:var(--soft);color:var(--blue)}
+.status{font-size:.72rem;padding:4px 7px;border-radius:999px;background:#edf8f2;color:#087f5b;white-space:nowrap}.soon{background:#f2f4f7;color:#667085}
+.product-footer{padding:0 24px 24px}.product-footer a{color:var(--blue);font-weight:800;text-decoration:none}
+.alt{background:#fff;border-block:1px solid var(--line)}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.app-card{padding:20px;background:#fff;border:1px solid var(--line);border-radius:13px;min-height:170px}.app-card .small-icon{width:40px;height:40px;border-radius:9px;background:var(--soft);color:var(--blue);display:grid;place-items:center;font-weight:850;margin-bottom:14px}.app-card h3{font-size:1.05rem;margin:0 0 6px}.app-card p{font-size:.91rem;color:var(--muted);margin:0}.app-card .tag{display:inline-block;margin-top:12px;font-size:.72rem;background:#f2f4f7;color:#667085;padding:4px 7px;border-radius:999px}
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.road{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px}.road b{display:block;color:var(--blue);font-size:.78rem;margin-bottom:5px}.road strong{display:block}.road span{color:var(--muted);font-size:.88rem}
+.cta{background:linear-gradient(115deg,#102a56,#0056d2);border-radius:18px;padding:34px;color:#fff}.cta h2{color:#fff}.cta p{color:#e6efff;max-width:750px}.cta .btn{margin-top:6px}
+.footer{padding:28px 0;background:#fff;border-top:1px solid var(--line);color:#667085;font-size:.9rem}
+@media(max-width:950px){.learning-path{grid-template-columns:1fr}.apps{grid-template-columns:repeat(2,1fr)}.roadmap{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.shell{width:calc(100% - 26px)}.nav{min-height:60px}.navlinks{display:none}.hero{padding:50px 0 44px}.hero h1{font-size:2.55rem}.actions{display:grid}.btn{width:100%}.stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)}.section{padding:48px 0}.section-head{display:block}.apps,.roadmap{grid-template-columns:1fr}.product-body{padding:20px}.product-footer{padding:0 20px 20px}.cta{padding:26px 20px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="shell nav"><a class="brand" href="index.html"><span class="brandmark"><i></i><i></i><i></i><i></i></span><span>Microsoft 365 Learning Hub</span></a><nav class="navlinks"><a href="#parcours">Parcours</a><a href="#applications">Applications</a><a href="#roadmap">Feuille de route</a></nav></div></header>
+
+<main>
+<section class="hero"><div class="shell">
+<span class="eyebrow">MICROSOFT 365 • PARCOURS DE FORMATION</span>
+<h1>Maîtrisez Microsoft 365, <span>une compétence à la fois.</span></h1>
+<p class="lead">Une plateforme d’apprentissage progressive pour développer vos compétences sur Word, PowerPoint, Excel et les principaux outils Microsoft 365, du niveau débutant au niveau avancé.</p>
+<div class="actions"><a class="btn primary" href="#parcours">Explorer les parcours</a><a class="btn" href="index-word.html">Commencer avec Word</a></div>
+<div class="stats"><div class="stat"><strong>3 niveaux</strong><span>Débutant • Intermédiaire • Avancé</span></div><div class="stat"><strong>Apprentissage pratique</strong><span>Cours • TP • Quiz</span></div><div class="stat"><strong>Progressif</strong><span>Word d’abord, puis les autres outils</span></div></div>
+</div></section>
+
+<section class="section" id="parcours"><div class="shell">
+<div class="section-head"><div><h2>Parcours principaux</h2><p class="section-intro">Chaque application est organisée en trois niveaux. Le parcours Word est le premier à être développé; PowerPoint et Excel suivront progressivement.</p></div></div>
+<div class="learning-path">
+
+<article class="product word"><div class="product-top"></div><div class="product-body"><div class="app-icon">W</div><h3>Microsoft Word</h3><p>Créer, mettre en forme, structurer et finaliser des documents professionnels.</p><div class="levels">
+<a class="level" href="index-word.html"><span>Niveau 1 — Fondamentaux</span><span class="status">En cours</span></a>
+<div class="level"><span>Niveau 2 — Intermédiaire</span><span class="status soon">À venir</span></div>
+<div class="level"><span>Niveau 3 — Avancé</span><span class="status soon">À venir</span></div>
+</div></div><div class="product-footer"><a href="index-word.html">Commencer Word →</a></div></article>
+
+<!--article class="product powerpoint"><div class="product-top"></div><div class="product-body"><div class="app-icon">P</div><h3>Microsoft PowerPoint</h3><p>Concevoir des présentations structurées, visuelles, professionnelles et efficaces.</p><div class="levels">
+<div class="level"><span>Niveau 1 — Fondamentaux</span><span class="status soon">À venir</span></div>
+<div class="level"><span>Niveau 2 — Intermédiaire</span><span class="status soon">À venir</span></div>
+<div class="level"><span>Niveau 3 — Avancé</span><span class="status soon">À venir</span></div>
+</div></div><div class="product-footer"><span style="color:#667085;font-weight:700">Prochain parcours</span></div></article>
+
+<article class="product excel"><div class="product-top"></div><div class="product-body"><div class="app-icon">X</div><h3>Microsoft Excel</h3><p>Organiser, calculer, analyser et présenter des données dans des feuilles de calcul.</p><div class="levels">
+<div class="level"><span>Niveau 1 — Fondamentaux</span><span class="status soon">À venir</span></div>
+<div class="level"><span>Niveau 2 — Intermédiaire</span><span class="status soon">À venir</span></div>
+<div class="level"><span>Niveau 3 — Avancé</span><span class="status soon">À venir</span></div>
+</div></div><div class="product-footer"><span style="color:#667085;font-weight:700">À développer après PowerPoint</span></div></article>
+</div>
+</div></section>
+
+<section class="section alt" id="applications"><div class="shell">
+<div class="section-head"><div><h2>Explorer l’écosystème Microsoft 365</h2><p class="section-intro">Après les parcours Word, PowerPoint et Excel, le Learning Hub pourra s’étendre aux outils de communication, de collaboration, de stockage, de planification et de création de Microsoft 365.</p></div></div>
+<div class="apps">
+<article class="app-card"><div class="small-icon">O</div><h3>Outlook</h3><p>Courriel, calendrier, contacts et organisation du travail.</p><span class="tag">À venir</span></article>
+<article class="app-card"><div class="small-icon">T</div><h3>Microsoft Teams</h3><p>Réunions, conversations, appels et collaboration en équipe.</p><span class="tag">À venir</span></article>
+<article class="app-card"><div class="small-icon">☁</div><h3>OneDrive</h3><p>Stockage, accès, synchronisation et partage de fichiers.</p><span class="tag">À venir</span></article>
+<article class="app-card"><div class="small-icon">N</div><h3>OneNote</h3><p>Prise de notes et organisation de contenus dans des blocs-notes.</p><span class="tag">À venir</span></article>
+<article class="app-card"><div class="small-icon">S</div><h3>SharePoint</h3><p>Sites d’équipe, ressources partagées et collaboration documentaire.</p><span class="tag">À venir</span></article>
+<article class="app-card"><div class="small-icon">F</div><h3>Microsoft Forms</h3><p>Questionnaires, formulaires, sondages et collecte de réponses.</p><span class="tag">À venir</span></article>
+<article class="app-card"><div class="small-icon">✓</div><h3>Planner & To Do</h3><p>Organisation des tâches individuelles et du travail en équipe.</p><span class="tag">À venir</span></article>
+<article class="app-card"><div class="small-icon">∞</div><h3>Microsoft Loop</h3><p>Espaces de travail et composants collaboratifs pour les projets.</p><span class="tag">À venir</span></article>
+<article class="app-card"><div class="small-icon">A</div><h3>Power Automate</h3><p>Automatiser des processus et des tâches répétitives.</p><span class="tag">À venir</span></article>
+<article class="app-card"><div class="small-icon">BI</div><h3>Power BI</h3><p>Analyse et visualisation de données pour créer des rapports interactifs.</p><span class="tag">À venir</span></article>
+<article class="app-card"><div class="small-icon">V</div><h3>Clipchamp</h3><p>Création et montage de contenus vidéo.</p><span class="tag">À venir</span></article>
+<article class="app-card"><div class="small-icon">C</div><h3>Microsoft 365 Copilot</h3><p>Découvrir progressivement les usages de l’IA dans l’environnement Microsoft 365.</p><span class="tag">À venir</span></article-->
+</div>
+</div></section>
+
+<section class="section" id="roadmap"><div class="shell">
+<div class="section-head"><div><h2>Feuille de route pédagogique</h2><p class="section-intro">Une structure simple pour construire le site progressivement sans devoir développer tous les cours en même temps.</p></div></div>
+<div class="roadmap">
+<div class="road"><b>ÉTAPE 01</b><strong>Word</strong><span>Niveaux 1, 2 et 3</span></div>
+<div class="road"><b>ÉTAPE 02</b><strong>PowerPoint</strong><span>Niveaux 1, 2 et 3</span></div>
+<div class="road"><b>ÉTAPE 03</b><strong>Excel</strong><span>Niveaux 1, 2 et 3</span></div>
+<div class="road"><b>ÉTAPE 04</b><strong>Microsoft 365</strong><span>Outlook, Teams, OneDrive, OneNote, SharePoint, Forms et autres outils</span></div>
+</div>
+</div></section>
+
+<section class="section"><div class="shell"><div class="cta"><h2>Le parcours commence avec Microsoft Word</h2><p>Le contenu Word que vous avez déjà créé devient le premier parcours du Learning Hub. Vous pourrez ensuite ajouter PowerPoint, puis Excel, tout en conservant cette page comme portail principal de toute la plateforme.</p><a class="btn" href="index-word.html">Accéder au parcours Word →</a></div></div></section>
+</main>
+
+<footer class="footer"><div class="shell">Microsoft 365 Learning Hub • Parcours pédagogiques • A. Aouichat</div></footer>
+</body>
+</html>

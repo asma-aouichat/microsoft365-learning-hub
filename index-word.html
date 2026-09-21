@@ -1,0 +1,156 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Microsoft 365 Learning Hub</title><link rel="stylesheet" href="assets/css/style.css">
+<style>
+:root{
+  --blue:#0056d2;--blue2:#003f9e;--ink:#17223b;--muted:#5f6b7a;
+  --bg:#f7f9fc;--surface:#fff;--line:#e2e8f0;--soft:#eef5ff;
+  --radius:16px;--shadow:0 10px 30px rgba(23,34,59,.08)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6}
+.shell{width:min(1180px,calc(100% - 40px));margin:auto}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font-weight:800}
+.logo{width:38px;height:38px;display:grid;place-items:center;background:var(--blue);color:#fff;border-radius:9px;font-weight:800}
+.navlinks{display:flex;gap:6px}
+.navlinks a{text-decoration:none;color:#344054;font-weight:650;padding:9px 12px;border-radius:8px}
+.navlinks a:hover{background:var(--soft);color:var(--blue)}
+
+.hero{position:relative;overflow:hidden;padding:88px 0 72px;background:linear-gradient(120deg,#f7fbff 0%,#fff 55%,#edf5ff 100%);border-bottom:1px solid var(--line)}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero:before{width:420px;height:420px;background:rgba(0,86,210,.06);right:-130px;top:-170px}
+.hero:after{width:240px;height:240px;background:rgba(0,86,210,.045);right:18%;bottom:-170px}
+.hero .shell{position:relative;z-index:1}
+.badge{display:inline-flex;padding:7px 12px;border-radius:999px;background:var(--soft);border:1px solid #cfe0ff;color:var(--blue);font-size:.78rem;font-weight:800;letter-spacing:.055em}
+.hero h1{max-width:800px;margin:18px 0 16px;font-size:clamp(2.6rem,6vw,5rem);line-height:1.02;letter-spacing:-.055em}
+.gradient{background:linear-gradient(90deg,var(--blue),#4d7fe7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:720px;font-size:1.15rem;color:var(--muted);margin:0 0 28px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border:1px solid #b8c4d4;border-radius:9px;background:#fff;color:var(--ink);text-decoration:none;font-weight:750;transition:.18s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(23,34,59,.08)}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.primary:hover{background:var(--blue2)}
+.hero .progress{height:7px;max-width:500px;margin-top:38px;background:#dce6f3;border-radius:999px;overflow:hidden}
+.hero .progress span{display:block;height:100%;background:var(--blue);border-radius:inherit}
+
+.section{padding:72px 0}
+.section:nth-of-type(3){padding-top:18px}
+.section h2{font-size:clamp(1.8rem,3vw,2.5rem);letter-spacing:-.035em;margin:0 0 8px}
+.section-intro{margin:0 0 30px;color:var(--muted);font-size:1.05rem}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:25px;box-shadow:0 4px 16px rgba(15,23,42,.04);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.grid .card:hover{transform:translateY(-4px);border-color:#bfd3f4;box-shadow:var(--shadow)}
+.course-icon{width:46px;height:46px;display:grid;place-items:center;margin-bottom:20px;border-radius:11px;background:var(--soft);color:var(--blue);font-size:1.15rem;font-weight:850}
+.course-no{font-size:.76rem;color:var(--blue);font-weight:850;letter-spacing:.075em;margin-bottom:5px}
+.card h3{font-size:1.25rem;line-height:1.25;margin:4px 0 10px;letter-spacing:-.015em}
+.card p{color:var(--muted);margin:0 0 20px}
+.link{display:inline-flex;margin-top:auto;color:var(--blue);text-decoration:none;font-weight:800}
+.link:hover{text-decoration:underline}
+.grid .card{display:flex;flex-direction:column}
+.grid .card .link{margin-top:auto}
+
+.section:last-of-type{padding-top:0}
+.section:last-of-type .card{padding:30px;background:linear-gradient(115deg,#102a56,#0056d2);color:#fff;border:0}
+.section:last-of-type .card h2{color:#fff;font-size:1.6rem}
+.section:last-of-type .card p{color:#e8f1ff;margin-bottom:0;max-width:850px}
+
+.footer{padding:28px 0;background:#fff;border-top:1px solid var(--line);color:#667085;font-size:.92rem}
+
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:68px 0 58px}}
+@media(max-width:640px){.shell{width:min(100% - 24px,1180px)}.nav{min-height:62px}.navlinks{display:none}.hero{padding:54px 0 46px}.hero h1{font-size:2.65rem}.grid{grid-template-columns:1fr}.section{padding:52px 0}.card{padding:21px}}
+</style>
+
+<style id="responsive-enhancements">
+/* Responsive enhancements: mobile-first refinements */
+img,video,iframe,svg{max-width:100%;height:auto}
+body{overflow-x:hidden}
+.nav,.hero .shell,.section .shell,.footer .shell{min-width:0}
+
+/* Large desktop */
+@media (min-width:1400px){
+  .shell{width:min(1280px,calc(100% - 64px))}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .hero{padding:100px 0 82px}
+}
+
+/* Standard desktop / laptop */
+@media (min-width:901px) and (max-width:1399px){
+  .shell{width:min(1180px,calc(100% - 48px))}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+/* Tablet */
+@media (min-width:641px) and (max-width:900px){
+  .shell{width:min(100% - 36px,860px)}
+  .nav{min-height:66px}
+  .navlinks{display:flex;gap:2px}
+  .navlinks a{padding:8px 9px;font-size:.92rem}
+  .hero{padding:62px 0 54px}
+  .hero h1{font-size:clamp(2.7rem,8vw,4.3rem)}
+  .lead{font-size:1.08rem}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .section{padding:58px 0}
+}
+
+/* Mobile */
+@media (max-width:640px){
+  .shell{width:calc(100% - 28px)}
+  .topbar{position:sticky;top:0}
+  .nav{min-height:60px}
+  .brand{font-size:.92rem;min-width:0}
+  .brand span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .logo{width:34px;height:34px;flex:0 0 34px}
+  .navlinks{display:none}
+
+  .hero{padding:46px 0 40px}
+  .badge{font-size:.68rem;padding:6px 9px;letter-spacing:.035em}
+  .hero h1{font-size:clamp(2.25rem,12vw,3.25rem);line-height:1.03;margin:15px 0}
+  .lead{font-size:1rem;line-height:1.6}
+  .actions{display:grid;grid-template-columns:1fr;gap:10px}
+  .btn{width:100%;min-height:48px}
+  .hero .progress{max-width:none;margin-top:28px}
+
+  .section{padding:46px 0}
+  .section h2{font-size:1.8rem}
+  .section-intro{font-size:1rem;margin-bottom:22px}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .card{padding:21px;border-radius:14px}
+  .course-icon{width:42px;height:42px;margin-bottom:16px}
+  .card h3{font-size:1.18rem}
+  .footer{text-align:center;padding:23px 0}
+}
+
+/* Small phones */
+@media (max-width:380px){
+  .shell{width:calc(100% - 20px)}
+  .brand{font-size:.84rem}
+  .hero{padding-top:38px}
+  .hero h1{font-size:2.15rem}
+  .card{padding:18px}
+}
+
+/* Touch devices */
+@media (hover:none){
+  .grid .card:hover,.btn:hover{transform:none}
+  .btn,.link,.navlinks a{min-height:44px}
+}
+
+/* Accessibility / reduced motion */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+
+</head><body><header class="topbar"><div class="shell nav"><a class="brand" href="index.html"><span class="logo">W</span><span>Microsoft 365 Learning Hub</span></a><nav class="navlinks"><a href="index.html#cours">Cours</a><a href="exercices.html">Exercices</a><a href="ressources.html">Ressources</a></nav></div></header>
+<section class="hero"><div class="shell"><span class="badge">MICROSOFT WORD • PARCOURS COMPLET</span><h1>Apprendre Word, <span class="gradient">étape par étape.</span></h1><p class="lead">Un site pédagogique construit à partir des supports de cours fournis : mise en forme, insertion, mise en page, références, révision et publipostage.</p><div class="actions"><a class="btn primary" href="#cours">Commencer</a><a class="btn" href="exercices.html">Voir les exercices</a></div><div class="progress"><span></span></div><p data-progress-text></p></div></section>
+<section class="section" id="cours"><div class="shell"><h2>Votre parcours</h2><p class="section-intro">Sept modules progressifs, de la prise en main de Word jusqu’au publipostage.</p><div class="grid"><article class="card"><div class="course-icon">▶</div><div class="course-no">COURS 00</div><h3>Prise en main de Word</h3><p>Se connecter à Microsoft 365, ouvrir Word, créer ou ouvrir un fichier, enregistrer et retrouver son travail.</p><a class="link" href="cours-00-demarrage.html">Commencer ici →</a></article>
+<article class="card"><div class="course-icon">A</div><div class="course-no">COURS 01</div><h3>Accueil & mise en forme</h3><p>Maîtriser les outils essentiels de mise en forme du texte et des paragraphes.</p><a class="link" href="cours-accueil.html">Ouvrir le module →</a></article>
+<article class="card"><div class="course-icon">+</div><div class="course-no">COURS 02</div><h3>Insertion</h3><p>Insérer et organiser tableaux, formes, images, en-têtes, pieds de page et SmartArt.</p><a class="link" href="cours-insertion.html">Ouvrir le module →</a></article>
+<!--article class="card"><div class="course-icon">▤</div><div class="course-no">COURS 03</div><h3>Mise en page</h3><p>Configurer marges, orientation, colonnes, sauts de page et sections.</p><a class="link" href="cours-mise-en-page.html">Ouvrir le module →</a></article-->
+<!--article class="card"><div class="course-icon">R</div><div class="course-no">COURS 04</div><h3>Références</h3><p>Créer tables des matières et illustrations, notes, citations et bibliographie.</p><a class="link" href="cours-references.html">Ouvrir le module →</a></article-->
+<!--article class="card"><div class="course-icon">✓</div><div class="course-no">COURS 05</div><h3>Révision</h3><p>Suivre, afficher, accepter et refuser les modifications d’un document.</p><a class="link" href="cours-revision.html">Ouvrir le module →</a></article-->
+<!--article class="card"><div class="course-icon">✉</div><div class="course-no">COURS 06</div><h3>Publipostage</h3><p>Fusionner une lettre-type et une source de données pour produire des documents personnalisés.</p><a class="link" href="cours-publipostage.html">Ouvrir le module →</a></article--></div></div></section>
+<section class="section"><div class="shell"><div class="card"><h2>Mode d’emploi</h2><p>Ouvrez un module, étudiez les sections, réalisez l’activité pratique puis marquez le module comme terminé. La progression est enregistrée localement dans votre navigateur.</p></div></div></section>
+<footer class="footer"><div class="shell">Microsoft 365 Learning Hub  •  Support pédagogique Microsoft Word • A. Aouichat </div></footer><script src="assets/js/app.js"></script></body></html>

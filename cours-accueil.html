@@ -1,28 +1,731 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cours 01 — Accueil | Microsoft 365 Learning Hub</title><link rel="stylesheet" href="assets/css/style.css"></head><body>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cours 01 — Accueil | Microsoft 365 Learning Hub</title><link rel="stylesheet" href="assets/css/style.css">
+<style id="course01-modern-responsive">
+:root{
+ --c1-blue:#0056d2;--c1-blue-dark:#003f9e;--c1-soft:#eef5ff;
+ --c1-ink:#17223b;--c1-muted:#5f6b7a;--c1-bg:#f6f8fb;
+ --c1-surface:#fff;--c1-line:#e2e8f0;--c1-green:#087f5b;
+ --c1-radius:16px;--c1-shadow:0 10px 30px rgba(23,34,59,.075)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--c1-bg);color:var(--c1-ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.65;overflow-x:hidden}
+img,video,iframe,svg{max-width:100%;height:auto}
+.shell{width:min(1240px,calc(100% - 40px));margin-inline:auto}
+
+/* Header */
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid var(--c1-line);backdrop-filter:blur(12px)}
+.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--c1-ink);font-weight:800;text-decoration:none}
+.logo{width:38px;height:38px;border-radius:9px;background:var(--c1-blue);color:#fff;display:grid;place-items:center;font-weight:850}
+.navlinks{display:flex;gap:5px}.navlinks a{padding:9px 11px;border-radius:8px;color:#475467;text-decoration:none;font-weight:650}.navlinks a:hover{background:var(--c1-soft);color:var(--c1-blue)}
+
+/* Main course layout */
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:34px;align-items:start;padding-top:32px;padding-bottom:64px}
+.sidebar{position:sticky;top:92px;max-height:calc(100vh - 115px);overflow:auto;background:#fff;border:1px solid var(--c1-line);border-radius:14px;padding:15px 11px;box-shadow:0 4px 16px rgba(15,23,42,.04)}
+.sidebar strong{display:block;padding:6px 11px 13px;margin-bottom:7px;border-bottom:1px solid var(--c1-line);font-size:1rem}
+.sidebar a{display:block;margin:2px 0;padding:9px 11px;border-radius:8px;border-left:3px solid transparent;color:#526071;text-decoration:none;font-size:.91rem;line-height:1.35}
+.sidebar a:hover{background:var(--c1-soft);color:var(--c1-blue);border-left-color:var(--c1-blue)}
+article{min-width:0}
+
+/* Course hero */
+.lesson-head{position:relative;overflow:hidden;padding:38px 40px;margin-bottom:18px;border-radius:19px;background:linear-gradient(120deg,#102a56,#0056d2);color:#fff;box-shadow:var(--c1-shadow)}
+.lesson-head:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-105px;top:-150px;background:rgba(255,255,255,.08)}
+.lesson-head .course-no{position:relative;z-index:1;font-size:.77rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}
+.lesson-head h1{position:relative;z-index:1;margin:.35rem 0 .55rem;color:#fff;font-size:clamp(2.1rem,4.4vw,3.25rem);line-height:1.08;letter-spacing:-.035em}
+.lesson-head p{position:relative;z-index:1;max-width:780px;margin:.4rem 0;color:#edf5ff}
+.progress{position:relative;z-index:1;height:7px;margin-top:21px;border-radius:999px;background:rgba(255,255,255,.22);overflow:hidden}.progress span{display:block;height:100%;background:#fff;border-radius:inherit}
+
+/* Jump nav */
+.lesson-nav{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 20px;padding:11px;background:#fff;border:1px solid var(--c1-line);border-radius:12px;box-shadow:0 2px 10px rgba(15,23,42,.025)}
+.lesson-nav a{padding:8px 11px;border-radius:7px;color:#475467;text-decoration:none;font-size:.89rem;font-weight:700}.lesson-nav a:hover{background:var(--c1-soft);color:var(--c1-blue)}
+
+/* Lesson cards */
+.lesson{margin-bottom:20px;padding:31px 33px;background:#fff;border:1px solid var(--c1-line);border-radius:16px;box-shadow:0 4px 17px rgba(15,23,42,.04)}
+.lesson h2{margin:.4rem 0 .75rem;font-size:clamp(1.5rem,2.7vw,2.05rem);line-height:1.23;letter-spacing:-.025em}
+.lesson h3{margin:1.45rem 0 .65rem;font-size:1.12rem;color:#27354b}.lesson p{color:#4b5565}
+.badge{display:inline-flex!important;align-items:center;padding:6px 10px!important;border:1px solid #cfe0ff!important;border-radius:999px!important;background:var(--c1-soft)!important;color:var(--c1-blue)!important;font-size:.73rem!important;font-weight:850!important;letter-spacing:.045em}
+
+/* Visual learning */
+.visual-card{margin:18px 0;padding:11px;background:#fff;border:1px solid var(--c1-line);border-radius:14px;box-shadow:0 6px 20px rgba(15,23,42,.06);overflow:hidden}
+.visual-card img{display:block;width:100%;height:auto;border-radius:9px;object-fit:contain}
+.visual-caption{padding:10px 4px 2px;color:var(--c1-muted);font-size:.88rem}
+.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+.steps{counter-reset:c1step;display:grid;gap:9px;margin:1rem 0}.step{position:relative;padding:13px 15px 13px 52px!important;background:#fafcff!important;border:1px solid var(--c1-line)!important;border-radius:10px!important}
+.step:before{counter-increment:c1step;content:counter(c1step);position:absolute;left:13px;top:11px;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:var(--c1-blue);color:#fff;font-size:.8rem;font-weight:850}
+.tip,.callout{margin:16px 0!important;padding:16px 18px!important;border-radius:11px!important;box-shadow:none!important}.tip{background:#effaf6!important;border:1px solid #c7eee0!important;border-left:4px solid var(--c1-green)!important}.callout{background:#f7f9fc!important;border:1px solid var(--c1-line)!important;border-left:4px solid var(--c1-blue)!important}
+.kbd{display:inline-block;padding:2px 7px;border:1px solid #cbd5e1;border-bottom-width:2px;border-radius:5px;background:#f8fafc;color:#334155;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em}
+
+/* Ribbon demo */
+.ribbon-demo{margin:18px 0;border:1px solid var(--c1-line);border-radius:13px;background:#fff;overflow:hidden;box-shadow:0 5px 18px rgba(15,23,42,.045)}
+.ribbon-tabs{display:flex;gap:2px;overflow-x:auto;padding:8px 10px 0;background:#f8fafc;border-bottom:1px solid var(--c1-line)}
+.ribbon-tabs span{flex:0 0 auto;padding:8px 10px;font-size:.84rem}.ribbon-tabs .active{color:var(--c1-blue);font-weight:800;border-bottom:3px solid var(--c1-blue)}
+.ribbon-groups{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--c1-line)}
+.ribbon-group{min-width:0;padding:14px 10px 9px;text-align:center;background:#fff}.toolrow{display:flex;justify-content:center;gap:5px;flex-wrap:wrap;min-height:48px}.tool{padding:5px 7px;border:1px solid #dbe2ea;border-radius:5px;background:#fafcff;font-size:.78rem}.ribbon-group>strong{display:block;margin-top:8px;color:#667085;font-size:.76rem}
+
+/* Exercises */
+.exercise-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:20px}
+.exercise-card{display:flex;flex-direction:column;min-width:0;padding:20px;border:1px solid var(--c1-line);border-radius:13px;background:#fff;box-shadow:0 3px 13px rgba(15,23,42,.035);transition:.18s ease}
+.exercise-card:hover{transform:translateY(-2px);border-color:#bed2f3;box-shadow:var(--c1-shadow)}
+.exercise-card .course-no{font-size:.72rem;font-weight:850;letter-spacing:.06em;color:var(--c1-blue)}.exercise-card h3{margin:.35rem 0 .55rem}.exercise-card .small{font-size:.91rem}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 10px}.chip{padding:4px 7px;border-radius:999px;background:#f1f5f9;color:#526071;font-size:.72rem;font-weight:700}
+.download-row{margin-top:auto;padding-top:10px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 14px;border:1px solid #b8c5d5;border-radius:8px;background:#fff;color:var(--c1-blue);text-decoration:none;font-weight:750}.btn.primary{background:var(--c1-blue);border-color:var(--c1-blue);color:#fff}
+.expected{margin-top:13px;border-top:1px solid var(--c1-line);padding-top:11px}.expected summary{cursor:pointer;color:var(--c1-blue);font-weight:750}
+.task{background:linear-gradient(120deg,#f6fbff,#fff)!important;border-color:#cfe0ff!important}
+.complete{display:flex;align-items:center;gap:10px;padding:15px;border:1px solid #bdd2f5;border-radius:10px;background:#f7fbff}.complete input{width:18px;height:18px;accent-color:var(--c1-blue)}
+.footer{padding:27px 0;border-top:1px solid var(--c1-line);background:#fff;color:#667085;font-size:.9rem}
+
+/* Responsive */
+@media(max-width:1000px){
+ .layout{grid-template-columns:220px minmax(0,1fr);gap:22px}
+ .lesson{padding:27px 25px}.lesson-head{padding:32px 28px}
+}
+@media(max-width:820px){
+ .layout{grid-template-columns:1fr;gap:17px;padding-top:20px}
+ .sidebar{position:static;display:flex;gap:5px;max-height:none;overflow-x:auto;white-space:nowrap;padding:8px}
+ .sidebar strong{display:none}.sidebar a{flex:0 0 auto;margin:0;border-left:0;border-bottom:3px solid transparent}.sidebar a:hover{border-bottom-color:var(--c1-blue)}
+ .two-col{grid-template-columns:1fr}.ribbon-groups{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:650px){
+ .shell{width:calc(100% - 24px)}.nav{min-height:60px}.navlinks{display:none}.brand{font-size:.92rem}.logo{width:34px;height:34px}
+ .lesson-head{padding:28px 20px;border-radius:14px}.lesson-head h1{font-size:2.15rem}
+ .lesson-nav{overflow-x:auto;flex-wrap:nowrap}.lesson-nav a{white-space:nowrap}
+ .lesson{padding:21px 17px;border-radius:12px}.exercise-grid{grid-template-columns:1fr}
+ .ribbon-groups{grid-template-columns:1fr}.visual-card{padding:7px}.exercise-card{padding:17px}
+ .btn{width:100%}
+}
+@media(max-width:380px){.shell{width:calc(100% - 18px)}.lesson-head h1{font-size:1.9rem}}
+@media(hover:none){.exercise-card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+
+
+<style id="tutorial-enhancements">
+.objectives{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.objective{padding:16px;border:1px solid var(--c1-line);border-radius:12px;background:#fff}
+.objective strong{display:block;color:var(--c1-blue);margin-bottom:4px}
+.try-box{margin:18px 0;padding:18px;border:1px solid #cfe0ff;border-radius:12px;background:#f7fbff}
+.try-box h3{margin:0 0 8px;color:#174ea6}
+.result-box{margin:14px 0;padding:14px 16px;border-left:4px solid var(--c1-green);background:#effaf6;border-radius:9px}
+.path{display:inline-flex;gap:6px;flex-wrap:wrap;align-items:center;margin:6px 0;padding:7px 10px;border-radius:8px;background:#eef5ff;color:#174ea6;font-weight:750}
+.tutorial-check{margin-top:14px;padding:12px 14px;border:1px dashed #b8c5d5;border-radius:9px;background:#fcfdff}
+@media(max-width:700px){.objectives{grid-template-columns:1fr}}
+</style>
+
+<style id="list-tutorial-details">
+.list-example{margin:20px 0;padding:20px;border:1px solid var(--c1-line);border-radius:14px;background:#fff}
+.list-example h3{margin:0 0 8px;color:#173b72}
+.before-after{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin:14px 0}
+.sample-box{padding:15px;border:1px solid var(--c1-line);border-radius:10px;background:#fafcff;min-height:120px}
+.sample-box strong{display:block;margin-bottom:8px;color:#475467}
+.arrow-box{font-size:1.6rem;color:var(--c1-blue);font-weight:900}
+.list-levels{margin:8px 0 0 20px}
+.list-levels ul,.list-levels ol{margin-top:5px}
+.command-note{padding:12px 14px;border-radius:9px;background:var(--c1-soft);color:#29415f;margin:12px 0}
+@media(max-width:700px){.before-after{grid-template-columns:1fr}.arrow-box{text-align:center;transform:rotate(90deg)}}
+</style>
+
+
+<style id="course-navigation-links">
+.course-navigation{display:flex;justify-content:space-between;gap:16px;align-items:stretch;margin:28px 0 10px}.course-navigation a{flex:1;display:flex;flex-direction:column;gap:3px;padding:16px 18px;border:1px solid var(--c1-line);border-radius:12px;background:#fff;color:var(--c1-blue);text-decoration:none;font-weight:800;box-shadow:0 3px 13px rgba(15,23,42,.035)}.course-navigation a:last-child{text-align:right;align-items:flex-end}.course-navigation small{color:var(--c1-muted);font-weight:650}.course-navigation a:hover{background:var(--c1-soft);border-color:#bed2f3}@media(max-width:650px){.course-navigation{flex-direction:column}.course-navigation a:last-child{text-align:left;align-items:flex-start}}
+</style>
+</head><body>
 <header class="topbar"><div class="shell nav"><a class="brand" href="index.html"><span class="logo">W</span><span>Microsoft 365 Learning Hub</span></a><nav class="navlinks"><a href="index.html#cours">Cours</a><a href="exercices.html">Exercices</a><a href="ressources.html">Ressources</a></nav></div></header>
-<main class="shell layout"><aside class="sidebar"><strong>Cours 01</strong><a href="#ruban">1. Ruban Accueil</a><a href="#police">2. Police</a><a href="#emphase">3. Gras / italique / souligné</a><a href="#paragraphe">4. Paragraphes</a><a href="#listes">5. Listes</a><a href="#alignement">6. Alignement</a><a href="#presse">7. Presse-papiers</a><a href="#styles">8. Styles</a><a href="#exercices">9. Exercices</a></aside>
-<article><header class="lesson-head"><div class="course-no" style="color:#dbe5ff">COURS 01 • MICROSOFT WORD</div><h1>Accueil & mise en forme</h1><p>Comprendre le ruban Accueil et maîtriser la mise en forme des caractères, paragraphes, listes, alignements, presse-papiers et styles.</p><div class="progress"><span></span></div><p data-progress-text></p></header>
-<div class="lesson-nav"><a href="#ruban">Ruban</a><a href="#police">Police</a><a href="#paragraphe">Paragraphe</a><a href="#presse">Presse-papiers</a><a href="#styles">Styles</a><a href="#exercices">TP</a></div>
-<section class="lesson" id="ruban"><span class="badge">01 • SE REPÉRER</span><h2>L’onglet Accueil du ruban</h2><p>L’onglet <strong>Accueil</strong> concentre les commandes utilisées le plus souvent pour modifier l’apparence et l’organisation du texte. Dans le support de cours, il est présenté en quatre groupes principaux : <strong>Presse-papiers</strong>, <strong>Police</strong>, <strong>Paragraphe</strong> et <strong>Style</strong>.</p>
-<div class="visual-card"><img src="assets/images/course01/slides/slide-02.png" alt="Diapositive du cours montrant l'onglet Accueil et ses groupes"><div class="visual-caption">Capture du support original — vue annotée du ruban Accueil.</div></div>
-<h3>Repère Microsoft 365 actuel</h3><p>L’apparence exacte varie selon Word pour Windows, Mac ou le web, mais la logique reste la même. Ce schéma moderne vous aide à retrouver les groupes essentiels sans dépendre d’une version précise.</p>
-<div class="ribbon-demo"><div class="ribbon-tabs"><span>Fichier</span><span class="active">Accueil</span><span>Insertion</span><span>Mise en page</span><span>Références</span><span>Révision</span></div><div class="ribbon-groups"><div class="ribbon-group"><div class="toolrow"><span class="tool">Coller</span><span class="tool">Couper</span><span class="tool">Copier</span></div><strong>Presse-papiers</strong></div><div class="ribbon-group"><div class="toolrow"><span class="tool">Aptos</span><span class="tool">11</span><span class="tool big">G</span><span class="tool"><em>I</em></span><span class="tool"><u>S</u></span><span class="tool">A▾</span></div><strong>Police</strong></div><div class="ribbon-group"><div class="toolrow"><span class="tool">• Liste</span><span class="tool">1. Liste</span><span class="tool">←</span><span class="tool">≡</span><span class="tool">☰</span></div><strong>Paragraphe</strong></div><div class="ribbon-group"><div class="toolrow"><span class="tool">Normal</span><span class="tool">Titre 1</span><span class="tool">Titre 2</span></div><strong>Styles</strong></div></div></div>
-<div class="tip"><strong>À retenir :</strong> avant de chercher une commande, identifiez d’abord son groupe : caractère → Police; organisation du paragraphe → Paragraphe; duplication → Presse-papiers; cohérence globale → Styles.</div></section>
-<section class="lesson" id="police"><span class="badge">02 • CARACTÈRES</span><h2>Mettre en forme le texte avec le groupe Police</h2><p>Le groupe <strong>Police</strong> permet de modifier l’apparence des caractères : famille de police, taille, augmentation/réduction de taille, gras, italique, souligné, surbrillance et couleur.</p><div class="two-col"><div><h3>Procédure</h3><div class="steps"><div class="step">Sélectionnez le mot, la phrase ou le passage à modifier.</div><div class="step">Dans <strong>Accueil → Police</strong>, choisissez la police et la taille.</div><div class="step">Appliquez les attributs nécessaires : gras, italique, souligné, couleur ou surbrillance.</div><div class="step">Relisez le document et vérifiez que la mise en forme reste cohérente.</div></div></div><div class="visual-card"><img src="assets/images/course01/slides/slide-03.png" alt="Groupe Police annoté"><div class="visual-caption">Support original — les principales commandes du groupe Police.</div></div></div><div class="callout"><strong>Conseil pédagogique :</strong> ne multipliez pas les polices et couleurs. La mise en forme doit créer une hiérarchie visuelle, pas distraire le lecteur.</div></section>
-<section class="lesson" id="emphase"><span class="badge">03 • EMPHASE</span><h2>Gras, italique et souligné</h2><p>Le support utilise ces trois attributs pour mettre en évidence un ou plusieurs mots. Le <strong>gras</strong> renforce visuellement une information; l’<em>italique</em> apporte une emphase différente; le <u>soulignement</u> ajoute une ligne sous le texte.</p><div class="visual-card"><img src="assets/images/course01/slides/slide-04.png" alt="Gras italique et souligné dans Word"><div class="visual-caption">Support original — boutons G, I et S et raccourcis présentés dans le cours.</div></div><p><strong>Raccourcis du support :</strong> <span class="kbd">Ctrl+G</span> pour le gras et <span class="kbd">Ctrl+I</span> pour l’italique. Selon la langue et la plateforme de Word, certains raccourcis peuvent différer : vérifiez ceux affichés dans votre version.</p></section>
-<section class="lesson" id="paragraphe"><span class="badge">04 • PARAGRAPHES</span><h2>Mettre en forme les paragraphes</h2><p>La mise en forme d’un paragraphe agit sur un bloc de texte : alignement, retrait, espacement, listes et autres réglages. Elle est différente de la mise en forme des caractères, qui agit sur les lettres elles-mêmes.</p><div class="visual-card"><img src="assets/images/course01/slides/slide-05.png" alt="Groupe Paragraphe annoté"><div class="visual-caption">Support original — listes, retraits, alignement, espacement et trame.</div></div><div class="tip"><strong>Méthode :</strong> placez le curseur dans un paragraphe pour modifier ce paragraphe; sélectionnez plusieurs paragraphes si la même mise en forme doit s’appliquer à tous.</div></section>
-<section class="lesson" id="listes"><span class="badge">05 • LISTES</span><h2>Puces et numérotation</h2><p>Une <strong>liste à puces</strong> structure une énumération sans imposer d’ordre. Une <strong>liste numérotée</strong> met au contraire en évidence une séquence, un classement ou des étapes.</p><div class="visual-card"><img src="assets/images/course01/slides/slide-06.png" alt="Exemples de listes à puces et numérotées"><div class="visual-caption">Support original — différence entre énumération et ordre.</div></div><h3>Choisir le bon type</h3><p><strong>Puces :</strong> ingrédients, caractéristiques, idées indépendantes. <strong>Numéros :</strong> procédure, chronologie, priorité. Pour des documents plus complexes, Word permet aussi les listes à plusieurs niveaux.</p></section>
-<section class="lesson" id="alignement"><span class="badge">06 • ALIGNEMENT</span><h2>Aligner un texte</h2><p>Quatre alignements sont étudiés : <strong>gauche</strong>, <strong>centré</strong>, <strong>droite</strong> et <strong>justifié</strong>. Le choix dépend de la fonction du texte : un corps de lettre peut être justifié tandis qu’un titre peut être centré.</p><div class="visual-card"><img src="assets/images/course01/slides/slide-07.png" alt="Alignements gauche centre droite justifié"><div class="visual-caption">Support original — comparaison visuelle des quatre alignements.</div></div></section>
-<section class="lesson" id="presse"><span class="badge">07 • PRESSE-PAPIERS</span><h2>Copier, couper et coller</h2><p>Le presse-papiers permet de déplacer ou dupliquer rapidement du contenu. <strong>Copier</strong> conserve l’original; <strong>Couper</strong> prépare son déplacement; <strong>Coller</strong> insère le contenu à l’emplacement du curseur.</p><div class="two-col"><div><div class="steps"><div class="step">Sélectionnez le texte.</div><div class="step"><strong>Copier</strong> avec <span class="kbd">Ctrl+C</span> ou <strong>Couper</strong> avec <span class="kbd">Ctrl+X</span>.</div><div class="step">Placez le curseur à la destination.</div><div class="step"><strong>Coller</strong> avec <span class="kbd">Ctrl+V</span>.</div></div></div><div class="visual-card"><img src="assets/images/course01/slides/slide-08.png" alt="Copier couper coller"><div class="visual-caption">Support original — commandes du groupe Presse-papiers.</div></div></div></section>
-<section class="lesson" id="styles"><span class="badge">08 • STYLES</span><h2>Créer et modifier des styles</h2><p>Un style regroupe des attributs de mise en forme réutilisables. Au lieu de reformater manuellement chaque titre, on applique un style commun. Cela améliore la cohérence et facilite ensuite les changements globaux.</p><div class="visual-card"><img src="assets/images/course01/slides/slide-09.png" alt="Modifier un style Word"><div class="visual-caption">Support original — clic droit sur un style puis Modifier.</div></div><h3>Créer un style à partir d’un texte déjà formaté</h3><div class="steps"><div class="step">Mettez un texte en forme comme souhaité.</div><div class="step">Sélectionnez ce texte et ouvrez le menu des styles.</div><div class="step">Choisissez <strong>Créer un style</strong>.</div><div class="step">Donnez un nom explicite au style puis validez.</div></div><div class="visual-card"><img src="assets/images/course01/slides/slide-10.png" alt="Créer un style depuis une mise en forme"><div class="visual-caption">Support original — création d’un style depuis la mini-barre.</div></div><div class="visual-card"><img src="assets/images/course01/slides/slide-11.png" alt="Boîte de dialogue Modifier le style"><div class="visual-caption">Support original — modification de la police, taille, couleur, alignement, interligne et retrait.</div></div><div class="callout"><strong>Microsoft 365 :</strong> l’emplacement général reste <em>Accueil → Styles</em>. Word pour le web propose des styles, mais certaines fonctions avancées de création/modification sont surtout disponibles dans l’application de bureau.</div></section>
-<section class="lesson" id="exercices"><span class="badge">09 • TRAVAUX PRATIQUES</span><h2>Série N°01 — Mise en forme du texte</h2><p>Les exercices ci-dessous reprennent les fichiers fournis et le modèle de résultat du PDF. Téléchargez le document de départ, réalisez la mise en forme dans Word puis comparez votre résultat au modèle.</p><div class="exercise-grid">
-<article class="exercise-card"><div class="course-no">EXERCICE 2</div><h3>Programme de spectacles</h3><div class="chips"><span class="chip">Police</span><span class="chip">Taille</span><span class="chip">Alignement</span><span class="chip">Couleur</span></div><p class="small">Titre de spectacle en Times New Roman 18 centré; compagnie en Cambria 12 bleu à gauche; durée en Times New Roman 12 italique, soulignée et ombrée; artiste en gras; date soulignée à droite; résumé en Arial 10 centré gras.</p><div class="download-row"><a class="btn primary" href="assets/source/course01/Exo2.docx">Document de départ</a></div><details class="expected"><summary>Voir le résultat attendu</summary><div class="visual-card"><img src="assets/images/course01/exercises/exercise-01.png" alt="Résultat attendu exercice 2"></div></details></article>
-<article class="exercise-card"><div class="course-no">EXERCICE 3</div><h3>Lettre de résiliation</h3><div class="chips"><span class="chip">Alignement</span><span class="chip">Justification</span><span class="chip">Retrait</span></div><p class="small">Bloc envoyeur à gauche; destinataire à droite; courrier justifié avec retrait de paragraphe; identification centrée; signature mise en forme.</p><div class="download-row"><a class="btn primary" href="assets/source/course01/Exo3.docx">Document de départ</a></div><details class="expected"><summary>Voir le modèle</summary><div class="visual-card"><img src="assets/images/course01/exercises/exercise-02.png" alt="Résultat attendu exercice 3"></div></details></article>
-<article class="exercise-card"><div class="course-no">EXERCICE 4</div><h3>Bulletin d’inscription</h3><div class="chips"><span class="chip">Reproduction</span><span class="chip">Mise en page</span></div><p class="small">Saisissez le texte fourni et reproduisez la mise en forme du modèle le plus fidèlement possible.</p><div class="download-row"><a class="btn" href="assets/source/course01/serie-N01-mise-en-forme.pdf">Consignes PDF</a></div><details class="expected"><summary>Voir le modèle</summary><div class="visual-card"><img src="assets/images/course01/exercises/exercise-02.png" alt="Modèle exercice 4"></div></details></article>
-<article class="exercise-card"><div class="course-no">EXERCICE 5</div><h3>Bordures et trame</h3><div class="chips"><span class="chip">Bordures</span><span class="chip">Trame</span></div><p class="small">Titre : bordure double 2,6 pt et arrière-plan gris 5 %. Sous-titre : bordure 1 pt.</p><div class="download-row"><a class="btn primary" href="assets/source/course01/Exo5.docx">Document de départ</a></div><details class="expected"><summary>Voir le résultat attendu</summary><div class="visual-card"><img src="assets/images/course01/exercises/exercise-03.png" alt="Résultat attendu exercice 5"></div></details></article>
-<article class="exercise-card"><div class="course-no">EXERCICE 6</div><h3>Listes à deux niveaux</h3><div class="chips"><span class="chip">Listes</span><span class="chip">Niveaux</span><span class="chip">Retraits</span></div><p class="small">À partir du fichier Exo6, construisez quatre listes distinctes avec deux niveaux de numérotation et réglez les retraits selon le modèle.</p><div class="download-row"><a class="btn primary" href="assets/source/course01/Exo6.docx">Document de départ</a></div><details class="expected"><summary>Voir le résultat attendu</summary><div class="visual-card"><img src="assets/images/course01/exercises/exercise-05.png" alt="Résultat attendu exercice 6"></div></details></article>
-<article class="exercise-card"><div class="course-no">EXERCICE 7</div><h3>Lettre de motivation</h3><div class="chips"><span class="chip">Lettre</span><span class="chip">Mise en forme</span></div><p class="small">Reproduisez sous Word la lettre de motivation présentée dans le support. Objectif : savoir structurer et mettre en forme une lettre professionnelle.</p><div class="download-row"><a class="btn" href="assets/source/course01/serie-N01-mise-en-forme.pdf">Consignes PDF</a></div><details class="expected"><summary>Voir le modèle</summary><div class="visual-card"><img src="assets/images/course01/exercises/exercise-06.png" alt="Modèle lettre de motivation"></div></details></article>
-</div></section>
-<section class="lesson tip task"><h2>Activité de synthèse</h2><p>Créez un document d’une page comprenant : un titre utilisant un style personnalisé, deux paragraphes avec des alignements différents, une liste à puces, une liste numérotée, au moins trois attributs de police, puis déplacez un passage avec Couper/Coller. L’objectif est de mobiliser l’ensemble des notions du module sans suivre un modèle.</p></section>
-<section class="lesson" data-course="accueil"><label class="complete"><input type="checkbox"> <strong>Marquer le Cours 01 comme terminé</strong></label></section>
+<main class="shell layout"><aside class="sidebar"><strong>Tutoriel Word 01</strong><a href="#ruban">1. Repérer Accueil</a><a href="#police">2. Modifier la police</a><a href="#emphase">3. Mettre en évidence</a><a href="#paragraphe">4. Organiser un paragraphe</a><a href="#listes">5. Créer une liste</a><a href="#alignement">6. Aligner le texte</a><a href="#bordures">7. Bordures</a><a href="#presse">8. Copier / déplacer</a><a href="#styles">9. Utiliser les styles</a><a href="#mini-tp">10. Mini TP</a><a href="#exercices">11. Exercices</a></aside>
+<article>
+<header class="lesson-head">
+<div class="course-no" style="color:#dbe5ff">COURS 01 • TUTORIEL MICROSOFT WORD</div>
+<h1>Maîtriser l’onglet Accueil</h1>
+<p>Un guide pratique, étape par étape, pour mettre en forme un document Word. Ouvrez Word et réalisez chaque manipulation en même temps que le tutoriel.</p>
+<div class="progress"><span></span></div><p data-progress-text></p>
+</header>
+
+<section class="lesson">
+<span class="badge">AVANT DE COMMENCER</span>
+<h2>Préparez votre document d’entraînement</h2>
+<p>Ce cours n’est pas une simple présentation des commandes. Vous allez créer un petit document et le transformer progressivement. À la fin, vous aurez utilisé les principales fonctions de l’onglet <strong>Accueil</strong>.</p>
+<div class="objectives">
+<div class="objective"><strong>Vous apprendrez à</strong>modifier la police, la taille, les couleurs, la surbrillance, l’indice, l’exposant et les effets du texte.</div>
+<div class="objective"><strong>Vous apprendrez à</strong>organiser les paragraphes avec alignements, retraits, espacement et listes.</div>
+<div class="objective"><strong>Vous apprendrez à</strong>copier, déplacer et uniformiser le contenu avec le Presse-papiers et les Styles.</div>
+</div>
+<div class="try-box"><h3>À faire maintenant</h3><div class="steps">
+<div class="step">Ouvrez <strong>Microsoft Word</strong> et créez un <strong>Document vierge</strong>.</div>
+<div class="step">Saisissez le titre <strong>Mon document Word</strong>.</div>
+<div class="step">Sous le titre, écrivez deux petits paragraphes de votre choix.</div>
+<div class="step">Ajoutez ensuite quatre mots sur quatre lignes : <strong>Word</strong>, <strong>Excel</strong>, <strong>PowerPoint</strong>, <strong>Outlook</strong>.</div>
+</div></div>
+</section>
+
+<div class="lesson-nav"><a href="#ruban">1. Accueil</a><a href="#police">2. Police</a><a href="#emphase">3. Emphase</a><a href="#paragraphe">4. Paragraphes</a><a href="#listes">5. Listes</a><a href="#alignement">6. Alignement</a><a href="#bordures">7. Bordures</a><a href="#presse">8. Copier/Coller</a><a href="#styles">9. Styles</a><a href="#exercices">Pratique</a></div>
+
+<section class="lesson" id="ruban">
+<span class="badge">ÉTAPE 1 • SE REPÉRER</span>
+<h2>Repérez l’onglet Accueil</h2>
+<p>Commencez par regarder le haut de la fenêtre Word. Le <strong>ruban</strong> regroupe les commandes dans différents onglets. Cliquez sur <strong>Accueil</strong> : c’est ici que vous trouverez les outils que vous utiliserez le plus souvent pour travailler sur le texte.</p>
+<div class="path">Word → Accueil</div>
+<div class="visual-card"><img src="assets/images/course01/slides/slide-02.png" alt="Onglet Accueil de Word annoté"><div class="visual-caption">Repérez surtout les groupes Presse-papiers, Police, Paragraphe et Styles.</div></div>
+<div class="try-box"><h3>Essayez</h3><p>Dans votre document, cliquez successivement sur les zones <strong>Presse-papiers</strong>, <strong>Police</strong>, <strong>Paragraphe</strong> et <strong>Styles</strong>. Ne modifiez encore rien : l’objectif est simplement de savoir où chercher une commande.</p></div>
+<div class="result-box"><strong>Vous avez réussi si :</strong> vous pouvez montrer rapidement où se trouvent les quatre groupes principaux de l’onglet Accueil.</div>
+</section>
+
+<section class="lesson" id="police">
+<span class="badge">ÉTAPE 2 • POLICE</span>
+<h2>Changez l’apparence du texte</h2>
+<p>La mise en forme commence par la <strong>sélection du texte</strong>. Le groupe <strong>Police</strong> permet ensuite de modifier la police, la taille, les couleurs, la surbrillance, l’indice, l’exposant et les effets de texte.</p>
+<div class="path">Accueil → Police</div>
+<div class="visual-card">
+<img src="assets/images/course01/generated/apparence-texte.png" alt="Guide visuel des commandes Police de Microsoft Word">
+<div class="visual-caption">Guide visuel — repérez les principales commandes du groupe <strong>Police</strong>.</div>
+</div>
+
+<h3>2.1 — Modifier la police et la taille</h3>
+<div class="steps">
+<div class="step">Sélectionnez le texte à modifier.</div>
+<div class="step">Ouvrez la liste <strong>Police</strong> et choisissez une police.</div>
+<div class="step">Choisissez une taille adaptée ou utilisez <strong>Agrandir la police</strong> / <strong>Réduire la police</strong>.</div>
+</div>
+
+<h3>2.2 — Modifier la couleur du texte</h3>
+<p>La <strong>couleur de police</strong> modifie directement la couleur des caractères.</p>
+<div class="steps">
+<div class="step">Sélectionnez le texte à modifier.</div>
+<div class="step">Dans <strong>Accueil → Police</strong>, ouvrez la flèche de <strong>Couleur de police</strong>.</div>
+<div class="step">Choisissez une couleur dans la palette.</div>
+</div>
+<div class="result-box"><strong>Résultat attendu :</strong> seuls les caractères sélectionnés changent de couleur.</div>
+
+<h3>2.3 — Appliquer une couleur de surbrillance au texte</h3>
+<p>La <strong>surbrillance</strong> ajoute une couleur derrière les caractères, comme un surligneur.</p>
+<div class="steps">
+<div class="step">Sélectionnez un mot ou une phrase.</div>
+<div class="step">Cliquez sur <strong>Couleur de surbrillance du texte</strong>.</div>
+<div class="step">Choisissez la couleur souhaitée.</div>
+</div>
+<div class="callout"><strong>À distinguer :</strong> la couleur de police change les caractères ; la surbrillance colore la zone située immédiatement derrière le texte.</div>
+
+<h3>2.4 — Utiliser l’indice et l’exposant</h3>
+<div class="visual-card">
+<img src="assets/images/course01/generated/2-4-indice-exposant.png" alt="Utiliser l’indice et l’exposant dans Microsoft Word">
+<div class="visual-caption">Étape 2.4 — sélectionnez le caractère concerné, puis utilisez <strong>Indice (X₂)</strong> ou <strong>Exposant (X²)</strong> dans le groupe <strong>Police</strong>. Exemple : H<sub>2</sub>O et x<sup>2</sup>.</div>
+</div>
+<div class="two-col">
+<div>
+<p><strong>Indice</strong> place les caractères légèrement sous la ligne de base. Exemple : H<sub>2</sub>O.</p>
+<div class="steps">
+<div class="step">Sélectionnez le caractère à placer en indice, par exemple le <strong>2</strong> de H2O.</div>
+<div class="step">Cliquez sur <strong>Indice (X₂)</strong> dans le groupe Police.</div>
+</div>
+</div>
+<div>
+<p><strong>Exposant</strong> place les caractères au-dessus de la ligne de base. Il est notamment utilisé pour les puissances : x<sup>2</sup>.</p>
+<div class="steps">
+<div class="step">Sélectionnez le caractère à placer en exposant, par exemple le <strong>2</strong> de x2.</div>
+<div class="step">Cliquez sur <strong>Exposant (X²)</strong>.</div>
+</div>
+</div>
+</div>
+<div class="result-box"><strong>Exemples à obtenir :</strong> H<sub>2</sub>O, CO<sub>2</sub>, m<sup>2</sup>, x<sup>3</sup>.</div>
+
+<h3>2.5 — Ajouter des effets au texte</h3>
+<div class="visual-card">
+<img src="assets/images/course01/generated/2-5-effets-texte.png" alt="Ajouter des effets au texte dans Microsoft Word">
+<div class="visual-caption">Étape 2.5 — sélectionnez le texte, ouvrez <strong>Effets de texte et typographie</strong>, puis choisissez un effet comme <strong>Ombre</strong>, <strong>Contour</strong>, <strong>Réflexion</strong> ou <strong>Lueur</strong>.</div>
+</div>
+<p>La commande <strong>Effets de texte et typographie</strong> permet d’ajouter des effets visuels. Selon la version de Word, vous pouvez notamment trouver <strong>Contour</strong>, <strong>Ombre</strong>, <strong>Réflexion</strong> et <strong>Lueur</strong>.</p>
+<div class="steps">
+<div class="step">Sélectionnez un titre ou un texte court.</div>
+<div class="step">Dans <strong>Accueil → Police</strong>, ouvrez <strong>Effets de texte et typographie</strong>.</div>
+<div class="step">Testez un effet, par exemple <strong>Ombre</strong>.</div>
+<div class="step">Comparez le résultat et évitez de multiplier les effets dans un document professionnel.</div>
+</div>
+<div class="try-box"><h3>Essayez</h3><div class="steps">
+<div class="step">Mettez un mot en couleur.</div>
+<div class="step">Surlignez un autre mot.</div>
+<div class="step">Écrivez <strong>H2O</strong> et transformez le 2 en indice.</div>
+<div class="step">Écrivez <strong>x2</strong> et transformez le 2 en exposant.</div>
+<div class="step">Appliquez une ombre à votre titre, puis annulez-la pour comparer.</div>
+</div></div>
+<div class="tutorial-check"><strong>Auto-vérification :</strong> savez-vous expliquer la différence entre couleur du texte, surbrillance, indice, exposant et effet de texte ?</div>
+</section>
+
+<section class="lesson" id="emphase">
+<span class="badge">ÉTAPE 3 • EMPHASE</span>
+<h2>Mettez des mots en gras, italique et souligné</h2>
+<p>Utilisez ces attributs pour attirer l’attention sur une partie précise du texte. Sélectionnez uniquement le mot ou le passage concerné avant d’appliquer la commande.</p>
+
+<div class="visual-card">
+<img src="assets/images/course01/generated/gras-italique-souligne.png" alt="Guide visuel Microsoft Word pour appliquer le gras, l’italique et le souligné">
+<div class="visual-caption">Guide visuel — sélectionnez un mot, puis utilisez les commandes <strong>Gras</strong>, <em>Italique</em> ou <u>Souligné</u> dans le groupe Police.</div>
+</div>
+<div class="try-box"><h3>À vous de jouer</h3><div class="steps">
+<div class="step">Dans le premier paragraphe, sélectionnez un mot important et appliquez <strong>Gras</strong>.</div>
+<div class="step">Sélectionnez un deuxième mot et appliquez <em>Italique</em>.</div>
+<div class="step">Sélectionnez un troisième mot et appliquez <u>Souligné</u>.</div>
+</div></div>
+<div class="callout"><strong>Raccourcis présentés dans le support :</strong> <span class="kbd">Ctrl+G</span> pour le gras et <span class="kbd">Ctrl+I</span> pour l’italique.</div>
+</section>
+
+<section class="lesson" id="paragraphe">
+<span class="badge">ÉTAPE 4 • PARAGRAPHE</span>
+<h2>Organisez vos paragraphes</h2>
+<p>Les commandes du groupe <strong>Paragraphe</strong> n’agissent pas seulement sur quelques lettres : elles organisent un paragraphe entier. Vous y trouverez notamment les listes, les retraits, les alignements, l’espacement et la couleur d’arrière-plan.</p>
+<div class="path">Accueil → Paragraphe</div>
+<div class="visual-card"><img src="assets/images/course01/generated/paragraphes-commandes.png" alt="Guide visuel des commandes du groupe Paragraphe dans Microsoft Word"><div class="visual-caption">Guide visuel — repérez les listes, les retraits, les alignements, l’espacement entre les lignes et les bordures dans le groupe <strong>Paragraphe</strong>.</div></div>
+<div class="try-box"><h3>Test rapide</h3><p>Cliquez dans votre premier paragraphe sans sélectionner les lettres. Essayez un bouton d’alignement, puis annulez l’action. Vous constaterez que Word applique l’alignement au paragraphe.</p></div>
+
+<h3>4.1 — Appliquer une trame de fond au paragraphe</h3>
+<p>La <strong>trame de fond</strong> applique une couleur d’arrière-plan à la zone du paragraphe. Elle est utile pour créer un bloc visuel, mettre en évidence une consigne ou accompagner une bordure.</p>
+<div class="path">Accueil → Paragraphe → Trame de fond</div>
+<div class="steps">
+<div class="step">Cliquez dans le paragraphe concerné ou sélectionnez plusieurs paragraphes.</div>
+<div class="step">Dans le groupe <strong>Paragraphe</strong>, ouvrez la commande <strong>Trame de fond</strong>.</div>
+<div class="step">Choisissez une couleur d’arrière-plan.</div>
+<div class="step">Pour des réglages plus détaillés, ouvrez <strong>Bordures et trame</strong>, puis utilisez l’onglet <strong>Trame de fond</strong>.</div>
+<div class="step">Vérifiez que l’application concerne bien le <strong>paragraphe</strong> lorsque vous souhaitez colorer le bloc entier.</div>
+</div>
+<div class="callout"><strong>Surbrillance ou trame de fond ?</strong> La <strong>surbrillance du texte</strong> suit le texte comme un marqueur. La <strong>trame de fond du paragraphe</strong> sert à colorer la zone du paragraphe et convient mieux aux blocs et encadrés.</div>
+<div class="try-box"><h3>Essayez</h3><p>Appliquez une trame de fond claire à votre premier paragraphe. Ajoutez ensuite une bordure dans l’étape 7 afin de créer un encadré complet.</p></div>
+</section>
+
+<section class="lesson" id="listes">
+<span class="badge">ÉTAPE 5 • LISTES</span>
+<h2>Transformez du texte en liste</h2>
+<p>Une liste permet de rendre une information plus facile à lire et à mémoriser. Dans Word, vous pouvez créer une <strong>liste à puces</strong>, une <strong>liste numérotée</strong> ou une <strong>liste à plusieurs niveaux</strong>. Commencez toujours par sélectionner les lignes que vous souhaitez transformer.</p>
+<div class="path">Accueil → Paragraphe → Puces / Numérotation / Liste à plusieurs niveaux</div>
+
+<div class="visual-card">
+<img src="assets/images/course01/generated/liste-overview.png" alt="Repérer les commandes Liste à puces et Liste numérotée dans Word">
+<div class="visual-caption">Avant de commencer — repérez les boutons <strong>Liste à puces</strong> et <strong>Liste numérotée</strong> dans Accueil → Paragraphe.</div>
+</div>
+
+<div class="list-example">
+<h3>5.1 — Créer une liste à puces simple</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/liste-puces.png" alt="Créer une liste à puces simple dans Word"><div class="visual-caption">Exemple 5.1 — sélectionnez les lignes puis cliquez sur <strong>Liste à puces</strong>. Observez le résultat avant/après.</div></div>
+<p>Choisissez les <strong>puces</strong> lorsque les éléments appartiennent au même groupe mais qu’aucun ordre particulier n’est nécessaire.</p>
+
+
+<div class="steps">
+<div class="step">Écrivez chaque élément sur une ligne différente.</div>
+<div class="step">Sélectionnez toutes les lignes.</div>
+<div class="step">Dans <strong>Accueil → Paragraphe</strong>, cliquez sur <strong>Puces</strong>.</div>
+<div class="step">Pour choisir un autre symbole, ouvrez la petite flèche à côté du bouton Puces.</div>
+</div>
+<div class="result-box"><strong>Résultat attendu :</strong> chaque élément commence par une puce et tous les éléments restent au même niveau.</div>
+</div>
+
+<div class="list-example">
+<h3>5.2 — Créer une liste numérotée simple</h3>
+<div class="visual-card">
+<img src="assets/images/course01/generated/liste-numerotee-simple.png" alt="Créer une liste numérotée simple dans Microsoft Word">
+<div class="visual-caption">Exemple 5.2 — sélectionnez les étapes, puis cliquez sur <strong>Numérotation</strong> dans le groupe <strong>Paragraphe</strong>. Word transforme chaque ligne en étape numérotée.</div>
+</div>
+<p>Utilisez la <strong>numérotation</strong> lorsqu’un ordre, une procédure ou une séquence doit être visible.</p>
+
+
+<div class="steps">
+<div class="step">Sélectionnez les étapes à organiser.</div>
+<div class="step">Cliquez sur <strong>Numérotation</strong> dans le groupe Paragraphe.</div>
+<div class="step">Utilisez la flèche du bouton pour choisir un autre format de numéros si nécessaire.</div>
+</div>
+<div class="tip"><strong>Conseil :</strong> préférez une liste numérotée pour des instructions que l’utilisateur doit suivre dans un ordre précis.</div>
+</div>
+
+<div class="list-example">
+<h3>5.3 — Créer une liste à puces avec plusieurs niveaux</h3>
+<div class="visual-card">
+<img src="assets/images/course01/generated/liste-puces-plusieurs-niveaux.png" alt="Créer une liste à puces avec plusieurs niveaux dans Microsoft Word">
+<div class="visual-caption">Exemple 5.3 — créez d’abord la liste à puces, puis utilisez <strong>Augmenter le retrait</strong> pour placer les sous-éléments au niveau inférieur. Utilisez <strong>Diminuer le retrait</strong> pour revenir au niveau précédent.</div>
+</div>
+<p>Une liste à plusieurs niveaux permet de distinguer une <strong>catégorie principale</strong> de ses <strong>sous-éléments</strong>.</p>
+<div class="before-after">
+<div class="sample-box"><strong>Texte de départ</strong>Fruits<br>&nbsp;&nbsp;Fraises<br>&nbsp;&nbsp;Bananes<br>Légumes<br>&nbsp;&nbsp;Carottes<br>&nbsp;&nbsp;Brocolis</div>
+<div class="arrow-box">→</div>
+<div class="sample-box"><strong>Résultat</strong>
+<ul class="list-levels"><li>Fruits<ul><li>Fraises</li><li>Bananes</li></ul></li><li>Légumes<ul><li>Carottes</li><li>Brocolis</li></ul></li></ul>
+</div>
+</div>
+<div class="steps">
+<div class="step">Créez d’abord une liste à puces simple avec tous les éléments.</div>
+<div class="step">Placez le curseur sur <strong>Fraises</strong> puis utilisez <strong>Augmenter le retrait</strong> pour créer un sous-niveau.</div>
+<div class="step">Faites la même chose pour <strong>Bananes</strong>, <strong>Carottes</strong> et <strong>Brocolis</strong>.</div>
+<div class="step">Utilisez <strong>Diminuer le retrait</strong> pour faire remonter un élément au niveau précédent.</div>
+</div>
+<div class="command-note"><strong>Principe :</strong> augmenter le retrait = descendre d’un niveau ; diminuer le retrait = remonter d’un niveau.</div>
+</div>
+
+<div class="list-example">
+<h3>5.4 — Créer une liste numérotée à plusieurs niveaux</h3>
+<div class="visual-card">
+<img src="assets/images/course01/generated/liste-numerotee-plusieurs-niveaux.png" alt="Créer une liste numérotée à plusieurs niveaux dans Microsoft Word">
+<div class="visual-caption">Exemple 5.4 — sélectionnez votre plan, ouvrez <strong>Liste à plusieurs niveaux</strong>, choisissez une numérotation hiérarchique, puis utilisez les retraits pour organiser les sous-parties.</div>
+</div>
+<p>Ce format est utile pour structurer des chapitres, des procédures détaillées ou des plans hiérarchiques.</p>
+<div class="sample-box">
+<strong>Exemple</strong>
+<ol class="list-levels">
+<li>Chapitre 1
+  <ol><li>Introduction</li><li>Concepts</li></ol>
+</li>
+<li>Chapitre 2
+  <ol><li>Exemple</li><li>Exercice</li></ol>
+</li>
+</ol>
+</div>
+<div class="steps">
+<div class="step">Sélectionnez les lignes qui formeront votre plan.</div>
+<div class="step">Dans <strong>Accueil → Paragraphe</strong>, ouvrez <strong>Liste à plusieurs niveaux</strong>.</div>
+<div class="step">Choisissez un modèle de numérotation hiérarchique.</div>
+<div class="step">Augmentez le retrait des sous-parties pour les placer sous leur chapitre principal.</div>
+</div>
+</div>
+
+<div class="list-example" id="personnaliser-puces">
+<h3>5.5 — Personnaliser une liste à puces à plusieurs niveaux</h3>
+<p>Dans cette partie, vous allez partir d’un texte simple, créer une liste hiérarchique, puis choisir une puce différente pour chaque niveau. Avancez dans l’ordre : chaque sous-section correspond à une manipulation précise.</p>
+
+<h3>5.5.1 — Sélectionner le texte à transformer</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-5-1-selectionner-texte.png" alt="Sélectionner le texte avant de créer une liste à puces à plusieurs niveaux dans Word"><div class="visual-caption">Étape 1 — sélectionnez toutes les lignes qui feront partie de la liste, y compris les catégories et leurs sous-éléments.</div></div>
+<div class="steps">
+<div class="step">Saisissez d’abord les catégories principales, par exemple <strong>Fruits</strong> et <strong>Légumes</strong>.</div>
+<div class="step">Ajoutez sous chaque catégorie les éléments correspondants : <strong>Fraises</strong>, <strong>Bananes</strong>, <strong>Carottes</strong> et <strong>Brocolis</strong>.</div>
+<div class="step">Sélectionnez l’ensemble des lignes. Ne modifiez pas encore les retraits.</div>
+</div>
+
+<h3>5.5.2 — Appliquer une première liste à puces</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-5-2-appliquer-puces.png" alt="Appliquer une liste à puces dans Microsoft Word"><div class="visual-caption">Étape 2 — dans <strong>Accueil → Paragraphe</strong>, cliquez sur <strong>Puces</strong>. Tous les éléments commencent d’abord au même niveau.</div></div>
+<div class="steps">
+<div class="step">Gardez le texte sélectionné.</div>
+<div class="step">Ouvrez l’onglet <strong>Accueil</strong> et repérez le groupe <strong>Paragraphe</strong>.</div>
+<div class="step">Cliquez sur <strong>Puces</strong> pour transformer toutes les lignes en liste.</div>
+</div>
+
+<h3>5.5.3 — Créer les différents niveaux</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-5-3-gerer-niveaux.png" alt="Augmenter et diminuer le niveau d'une liste à puces dans Word"><div class="visual-caption">Étape 3 — utilisez les commandes de retrait pour descendre un élément au niveau inférieur ou le faire remonter.</div></div>
+<div class="steps">
+<div class="step">Placez le curseur sur <strong>Fraises</strong>, puis cliquez sur <strong>Augmenter le retrait</strong>.</div>
+<div class="step">Répétez l’opération pour <strong>Bananes</strong>, <strong>Carottes</strong> et <strong>Brocolis</strong>.</div>
+<div class="step">Conservez <strong>Fruits</strong> et <strong>Légumes</strong> au niveau 1.</div>
+<div class="step">Si un élément descend trop loin, utilisez <strong>Diminuer le retrait</strong> pour le faire remonter.</div>
+</div>
+<div class="command-note"><strong>Repère :</strong> niveau 1 = catégories principales ; niveau 2 = éléments appartenant à ces catégories.</div>
+
+<h3>5.5.4 — Personnaliser la puce de chaque niveau</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-5-4-personnaliser-niveaux.png" alt="Personnaliser les puces de chaque niveau d'une liste Word"><div class="visual-caption">Étape 4 — sélectionnez un niveau, ouvrez la flèche du bouton <strong>Puces</strong>, puis choisissez un symbole dans la bibliothèque.</div></div>
+<div class="steps">
+<div class="step">Cliquez sur une puce du <strong>niveau 1</strong> afin de travailler sur ce niveau.</div>
+<div class="step">Cliquez sur la petite flèche située à droite de <strong>Puces</strong>.</div>
+<div class="step">Choisissez un symbole pour les catégories principales.</div>
+<div class="step">Cliquez ensuite sur une puce du <strong>niveau 2</strong> et choisissez un autre symbole afin de distinguer visuellement les sous-éléments.</div>
+</div>
+
+<h3>5.5.5 — Définir une nouvelle puce personnalisée</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-5-5-definir-puce.png" alt="Définir une nouvelle puce personnalisée dans Microsoft Word"><div class="visual-caption">Étape 5 — si les modèles proposés ne conviennent pas, ouvrez <strong>Définir une puce</strong> pour choisir un symbole différent.</div></div>
+<div class="steps">
+<div class="step">Ouvrez de nouveau la flèche du bouton <strong>Puces</strong>.</div>
+<div class="step">Choisissez <strong>Définir une puce</strong>.</div>
+<div class="step">Sélectionnez le symbole souhaité dans les options proposées.</div>
+<div class="step">Validez, puis vérifiez que le nouveau symbole est appliqué au niveau voulu.</div>
+</div>
+<div class="tip"><strong>Conseil :</strong> utilisez des symboles simples et cohérents. Le changement de puce doit aider à comprendre la hiérarchie, pas surcharger le document.</div>
+
+<h3>5.5.6 — Vérifier le résultat final</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-5-6-resultat-final.png" alt="Résultat final d'une liste à puces personnalisée à plusieurs niveaux"><div class="visual-caption">Étape 6 — le résultat final doit permettre d’identifier immédiatement les catégories principales et leurs sous-éléments.</div></div>
+<div class="tutorial-check"><strong>Auto-vérification :</strong> vos catégories sont-elles au niveau 1 ? Les sous-éléments sont-ils au niveau 2 ? Les deux niveaux utilisent-ils des puces visuellement distinctes ? Si oui, votre liste hiérarchique est correctement personnalisée.</div>
+</div>
+
+<div class="list-example" id="personnaliser-numerotation">
+<h3>5.6 — Personnaliser une liste numérotée à plusieurs niveaux</h3>
+<p>Dans cette partie, vous allez construire une numérotation hiérarchique puis personnaliser chaque niveau. L’objectif est d’obtenir une structure claire du type <strong>1.</strong>, <strong>1.1.</strong>, <strong>1.1.1.</strong>, avec un format adapté à chaque niveau.</p>
+
+<h3>5.6.1 — Sélectionner le texte à structurer</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-6-1-selectionner-texte-numerotation.png" alt="Sélectionner le texte pour une liste numérotée à plusieurs niveaux dans Word"><div class="visual-caption">Étape 1 — sélectionnez toutes les lignes qui doivent appartenir au plan hiérarchique.</div></div>
+<div class="steps">
+<div class="step">Saisissez les titres principaux et les sous-parties sur des lignes distinctes.</div>
+<div class="step">Par exemple : <strong>Chapitre 1</strong>, <strong>Introduction</strong>, <strong>Concepts</strong>, <strong>Chapitre 2</strong>, <strong>Exemple</strong> et <strong>Exercice</strong>.</div>
+<div class="step">Sélectionnez l’ensemble du texte avant d’appliquer la numérotation.</div>
+</div>
+
+<h3>5.6.2 — Appliquer une liste à plusieurs niveaux</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-6-2-appliquer-liste-multiniveau.png" alt="Appliquer une liste numérotée à plusieurs niveaux dans Word"><div class="visual-caption">Étape 2 — dans <strong>Accueil → Paragraphe</strong>, ouvrez <strong>Liste à plusieurs niveaux</strong> et choisissez un modèle hiérarchique.</div></div>
+<div class="steps">
+<div class="step">Gardez le texte sélectionné.</div>
+<div class="step">Ouvrez <strong>Accueil → Paragraphe → Liste à plusieurs niveaux</strong>.</div>
+<div class="step">Choisissez un modèle affichant plusieurs niveaux, par exemple <strong>1 → 1.1 → 1.1.1</strong>.</div>
+<div class="step">Vérifiez que Word applique d’abord une structure de numérotation au texte.</div>
+</div>
+
+<h3>5.6.3 — Créer les sous-niveaux</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-6-3-creer-sous-niveaux-numerotes.png" alt="Créer les sous-niveaux d'une liste numérotée dans Word"><div class="visual-caption">Étape 3 — utilisez <strong>Augmenter le retrait</strong> pour descendre un élément et <strong>Diminuer le retrait</strong> pour le faire remonter.</div></div>
+<div class="steps">
+<div class="step">Laissez <strong>Chapitre 1</strong> et <strong>Chapitre 2</strong> au niveau 1.</div>
+<div class="step">Placez <strong>Introduction</strong>, <strong>Concepts</strong>, <strong>Exemple</strong> et <strong>Exercice</strong> au niveau 2.</div>
+<div class="step">Pour créer un troisième niveau, sélectionnez une sous-partie puis augmentez encore son retrait.</div>
+<div class="step">Si un élément est placé au mauvais niveau, utilisez <strong>Diminuer le retrait</strong>.</div>
+</div>
+<div class="command-note"><strong>Repère :</strong> niveau 1 = 1, 2, 3… ; niveau 2 = 1.1, 1.2… ; niveau 3 = 1.1.1, 1.1.2… selon le modèle choisi.</div>
+
+<h3>5.6.4 — Ouvrir les paramètres avancés de la liste</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-6-4-definir-nouvelle-liste-multiniveau.png" alt="Définir une nouvelle liste à plusieurs niveaux dans Microsoft Word"><div class="visual-caption">Étape 4 — ouvrez le menu <strong>Liste à plusieurs niveaux</strong>, puis la commande permettant de définir une nouvelle liste à plusieurs niveaux.</div></div>
+<div class="steps">
+<div class="step">Cliquez dans la liste numérotée.</div>
+<div class="step">Ouvrez la flèche de <strong>Liste à plusieurs niveaux</strong>.</div>
+<div class="step">Choisissez <strong>Définir une nouvelle liste à plusieurs niveaux</strong>.</div>
+<div class="step">Dans la fenêtre, sélectionnez le niveau que vous souhaitez modifier.</div>
+</div>
+
+<h3>5.6.5 — Personnaliser le format de numérotation</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-6-5-personnaliser-format-numerotation.png" alt="Personnaliser le format de numérotation par niveau dans Word"><div class="visual-caption">Étape 5 — choisissez le niveau, son style de numéro et le format à afficher.</div></div>
+<div class="steps">
+<div class="step">Dans <strong>Cliquez sur le niveau à modifier</strong>, sélectionnez le niveau 1, 2 ou 3.</div>
+<div class="step">Choisissez le <strong>style de numérotation</strong> souhaité : 1, 2, 3 ; A, B, C ; a, b, c ; chiffres romains, etc.</div>
+<div class="step">Ajustez le <strong>format du numéro</strong> si vous souhaitez ajouter un point, un tiret ou un autre séparateur.</div>
+<div class="step">Répétez l’opération pour chaque niveau qui doit avoir une présentation différente.</div>
+</div>
+
+<h3>5.6.6 — Construire une numérotation liée aux niveaux précédents</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-6-6-lier-niveaux-numerotation.png" alt="Inclure les numéros des niveaux précédents dans une liste multiniveau Word"><div class="visual-caption">Étape 6 — pour obtenir 1.1 ou 1.1.1, faites apparaître les numéros des niveaux précédents dans le niveau courant.</div></div>
+<div class="steps">
+<div class="step">Sélectionnez le niveau 2 et construisez un format qui reprend le numéro du niveau 1 avant le numéro du niveau 2.</div>
+<div class="step">Pour le niveau 3, reprenez les numéros des niveaux supérieurs afin d’obtenir une structure du type <strong>1.1.1</strong>.</div>
+<div class="step">Vérifiez l’aperçu avant de valider afin de contrôler l’ordre et les séparateurs.</div>
+</div>
+
+<h3>5.6.7 — Ajuster l’alignement et les retraits</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-6-7-alignement-retraits-numerotation.png" alt="Ajuster l’alignement et les retraits d’une liste numérotée à plusieurs niveaux dans Word"><div class="visual-caption">Étape 7 — sélectionnez le niveau à modifier, puis réglez le retrait du numéro, le retrait du texte et ce qui suit le numéro.</div></div>
+<div class="steps">
+<div class="step">Sélectionnez le niveau à corriger dans la fenêtre de personnalisation.</div>
+<div class="step">Réglez la position du numéro et le retrait du texte pour ce niveau.</div>
+<div class="step">Comparez visuellement les niveaux 1, 2 et 3 et évitez des retraits trop importants.</div>
+<div class="step">Validez lorsque la hiérarchie est clairement visible.</div>
+</div>
+
+<h3>5.6.8 — Vérifier le résultat final</h3>
+<div class="visual-card"><img src="assets/images/course01/generated/5-6-8-resultat-final-numerotation.png" alt="Résultat final d'une liste numérotée personnalisée à plusieurs niveaux"><div class="visual-caption">Étape 8 — contrôlez la hiérarchie, la continuité de la numérotation et la cohérence visuelle des différents niveaux.</div></div>
+<div class="tutorial-check"><strong>Auto-vérification :</strong> les chapitres sont-ils au niveau 1 ? Les sous-parties utilisent-elles une numérotation du type 1.1 ? Un troisième niveau produit-il une structure du type 1.1.1 ? Les retraits permettent-ils de distinguer immédiatement les niveaux ?</div>
+<div class="tip"><strong>Conseil :</strong> pour un rapport long, un mémoire ou un document structuré, conservez une logique de numérotation identique du début à la fin du document.</div>
+</div>
+
+<div class="try-box">
+<h3>Exercice guidé — à vous de jouer</h3>
+<p>Dans votre document d’entraînement, réalisez les trois exemples suivants :</p>
+<div class="steps">
+<div class="step">Transformez <strong>Word, Excel, PowerPoint, Outlook</strong> en liste à puces.</div>
+<div class="step">Créez une liste numérotée de quatre étapes : <strong>Créer → Modifier → Enregistrer → Fermer</strong>.</div>
+<div class="step">Créez une liste à deux niveaux : <strong>Microsoft 365</strong> au niveau 1, puis <strong>Word, Excel et PowerPoint</strong> au niveau 2.</div>
+</div>
+</div>
+
+<div class="result-box"><strong>À retenir :</strong> puces = éléments sans ordre ; numérotation = séquence ; plusieurs niveaux = organisation hiérarchique.</div>
+</section>
+
+<section class="lesson" id="alignement">
+<span class="badge">ÉTAPE 6 • ALIGNEMENT</span>
+<h2>Alignez le texte selon son rôle</h2>
+<p>Word propose quatre alignements : <strong>gauche</strong>, <strong>centré</strong>, <strong>droite</strong> et <strong>justifié</strong>. Vous allez maintenant les tester directement.</p>
+<div class="visual-card"><img src="assets/images/course01/generated/paragraphes-alignement.png" alt="Exemples d’alignement dans Word"><div class="visual-caption">La capture compare visuellement les quatre alignements.</div></div>
+<div class="try-box"><h3>Manipulation</h3><div class="steps">
+<div class="step">Cliquez dans votre titre et choisissez <strong>Centrer</strong>.</div>
+<div class="step">Cliquez dans le premier paragraphe et choisissez <strong>Aligner à gauche</strong>.</div>
+<div class="step">Cliquez dans le deuxième paragraphe et testez <strong>Justifier</strong>.</div>
+<div class="step">Comparez les trois résultats avant de poursuivre.</div>
+</div></div>
+</section>
+
+
+<section class="lesson" id="bordures">
+<span class="badge">ÉTAPE 7 • BORDURES</span>
+<h2>Ajoutez des bordures au texte et aux paragraphes</h2>
+<p>Les <strong>bordures</strong> permettent de mettre en évidence une information ou de structurer visuellement une partie du document. Dans Word, il est important de distinguer une <strong>bordure appliquée au texte</strong> d’une <strong>bordure appliquée au paragraphe</strong>.</p>
+<div class="path">Accueil → Paragraphe → Bordures</div>
+
+<div class="two-col">
+<div>
+<h3>7.1 — Appliquer une bordure au texte</h3>
+<p>Une bordure de texte entoure uniquement les caractères sélectionnés. Elle est pratique pour mettre en valeur un mot, un titre court ou une expression.</p>
+<div class="steps">
+<div class="step">Sélectionnez le mot ou la portion de texte à encadrer.</div>
+<div class="step">Dans <strong>Accueil → Paragraphe</strong>, ouvrez la flèche du bouton <strong>Bordures</strong>.</div>
+<div class="step">Choisissez <strong>Bordures et trame</strong>.</div>
+<div class="step">Dans <strong>Appliquer à</strong>, choisissez <strong>Texte</strong>, puis sélectionnez le type de bordure souhaité.</div>
+<div class="step">Validez avec <strong>OK</strong> et observez que la bordure suit seulement le texte sélectionné.</div>
+</div>
+<div class="result-box"><strong>Résultat attendu :</strong> le cadre entoure uniquement le texte, sans occuper toute la largeur du paragraphe.</div>
+</div>
+
+<div>
+<h3>7.2 — Appliquer une bordure au paragraphe</h3>
+<div class="visual-card">
+<img src="assets/images/course01/generated/7-2-bordure-paragraphe.png" alt="Appliquer une bordure à un paragraphe dans Microsoft Word">
+<div class="visual-caption">Étape 7.2 — ouvrez le menu <strong>Bordures</strong> dans Accueil → Paragraphe, puis choisissez <strong>Bordures et trame</strong> pour configurer la bordure du paragraphe.</div>
+</div>
+<p>Une bordure de paragraphe encadre la zone du paragraphe. Elle peut servir à créer un bloc d’information, une consigne ou un encadré.</p>
+<div class="steps">
+<div class="step">Cliquez dans le paragraphe à encadrer ou sélectionnez plusieurs paragraphes.</div>
+<div class="step">Ouvrez <strong>Accueil → Paragraphe → Bordures</strong>.</div>
+<div class="step">Choisissez une bordure rapide ou ouvrez <strong>Bordures et trame</strong> pour davantage d’options.</div>
+<div class="step">Dans <strong>Appliquer à</strong>, choisissez <strong>Paragraphe</strong>.</div>
+<div class="step">Choisissez le style, la largeur et les côtés de la bordure, puis validez.</div>
+</div>
+<div class="result-box"><strong>Résultat attendu :</strong> la bordure s’étend selon la largeur du paragraphe et forme un véritable bloc.</div>
+</div>
+</div>
+
+<h3>7.3 — Choisir les côtés et personnaliser la bordure</h3>
+<div class="visual-card">
+<img src="assets/images/course01/generated/7-3-personnaliser-bordure.png" alt="Choisir les côtés, le style, la couleur et la largeur d’une bordure dans Microsoft Word">
+<div class="visual-caption">Étape 7.3 — dans <strong>Bordures et trame</strong>, choisissez le type, le style, la couleur et la largeur, puis utilisez l’aperçu pour activer uniquement les côtés souhaités avant de valider avec <strong>OK</strong>.</div>
+</div>
+<div class="steps">
+<div class="step">Ouvrez <strong>Bordures et trame</strong>.</div>
+<div class="step">Choisissez le <strong>style de ligne</strong>, la <strong>couleur</strong> et la <strong>largeur</strong>.</div>
+<div class="step">Dans l’aperçu, activez uniquement les côtés souhaités : haut, bas, gauche ou droite.</div>
+<div class="step">Vérifiez toujours l’option <strong>Appliquer à : Texte</strong> ou <strong>Paragraphe</strong> avant de valider.</div>
+</div>
+
+<div class="callout"><strong>Différence essentielle :</strong> <strong>Texte</strong> = la bordure épouse les caractères sélectionnés ; <strong>Paragraphe</strong> = la bordure encadre la zone du paragraphe.</div>
+<div class="try-box"><h3>Essayez</h3><div class="steps">
+<div class="step">Écrivez <strong>Important</strong> et appliquez-lui une bordure de texte.</div>
+<div class="step">Écrivez ensuite une phrase complète dans un nouveau paragraphe et appliquez-lui une bordure de paragraphe.</div>
+<div class="step">Comparez la largeur des deux bordures.</div>
+<div class="step">Modifiez ensuite uniquement la bordure inférieure du paragraphe.</div>
+</div></div>
+<div class="tutorial-check"><strong>Auto-vérification :</strong> pouvez-vous expliquer pourquoi une bordure de texte reste près des caractères alors qu’une bordure de paragraphe peut s’étendre sur une zone beaucoup plus large ?</div>
+</section>
+
+<section class="lesson" id="presse">
+<span class="badge">ÉTAPE 8 • PRESSE-PAPIERS</span>
+<h2>Copiez ou déplacez du texte</h2>
+<p><strong>Copier</strong> crée une copie tout en conservant le texte original. <strong>Couper</strong> retire le contenu sélectionné afin de le déplacer. <strong>Coller</strong> insère le contenu à la nouvelle position.</p>
+<div class="two-col"><div><div class="steps">
+<div class="step">Sélectionnez une phrase de votre premier paragraphe.</div>
+<div class="step">Utilisez <strong>Copier</strong> ou <span class="kbd">Ctrl+C</span>.</div>
+<div class="step">Placez le curseur à la fin du document.</div>
+<div class="step">Utilisez <strong>Coller</strong> ou <span class="kbd">Ctrl+V</span>.</div>
+<div class="step">Pour déplacer un passage au lieu de le dupliquer, utilisez <strong>Couper</strong> ou <span class="kbd">Ctrl+X</span>, puis collez-le ailleurs.</div>
+</div></div><div class="visual-card"><img src="assets/images/course01/slides/slide-08.png" alt="Copier Couper Coller dans Word"><div class="visual-caption">Les trois commandes se trouvent dans le groupe Presse-papiers.</div></div></div>
+<div class="result-box"><strong>Vérifiez :</strong> avec Copier, l’original reste en place ; avec Couper, il est déplacé après le collage.</div>
+</section>
+
+<section class="lesson" id="styles">
+<span class="badge">ÉTAPE 9 • STYLES</span>
+<h2>Uniformisez le document avec les Styles</h2>
+<p>Un <strong>style</strong> mémorise plusieurs choix de mise en forme. Il permet d’obtenir des titres et paragraphes cohérents sans refaire manuellement les mêmes réglages.</p>
+<h3>Modifier un style existant</h3>
+<div class="steps">
+<div class="step">Dans <strong>Accueil → Styles</strong>, repérez un style de la galerie.</div>
+<div class="step">Cliquez dessus avec le bouton droit.</div>
+<div class="step">Choisissez <strong>Modifier</strong>.</div>
+<div class="step">Modifiez les options de mise en forme souhaitées.</div>
+</div>
+<div class="visual-card"><img src="assets/images/course01/slides/slide-09.png" alt="Commande Modifier un style"><div class="visual-caption">Accès à la commande Modifier depuis la galerie Styles.</div></div>
+<div class="visual-card"><img src="assets/images/course01/slides/slide-11.png" alt="Fenêtre Modifier le style"><div class="visual-caption">La fenêtre permet notamment de régler la police, la taille et différentes propriétés du paragraphe.</div></div>
+<h3>Créer votre propre style</h3>
+<div class="steps">
+<div class="step">Mettez d’abord un texte en forme comme vous le souhaitez.</div>
+<div class="step">Sélectionnez ce texte puis ouvrez la galerie <strong>Styles</strong>.</div>
+<div class="step">Choisissez <strong>Créer un style</strong>.</div>
+<div class="step">Donnez un nom au style puis validez.</div>
+</div>
+<div class="visual-card"><img src="assets/images/course01/slides/slide-10.png" alt="Créer un style dans Word"><div class="visual-caption">Repérez la commande Créer un style dans la galerie.</div></div>
+</section>
+
+<section class="lesson task" id="mini-tp">
+<span class="badge">MINI TP • SANS MODÈLE</span>
+<h2>Finalisez votre document d’entraînement</h2>
+<p>Sans revenir aux étapes précédentes, essayez maintenant de réaliser les actions suivantes :</p>
+<div class="steps">
+<div class="step">Centrez le titre et rendez-le plus grand que le corps du texte.</div>
+<div class="step">Mettez au moins un mot en gras, un en italique et un en couleur.</div><div class="step">Créez un exemple avec un indice (H<sub>2</sub>O) et un exposant (x<sup>2</sup>).</div><div class="step">Appliquez une surbrillance à un mot et une trame de fond à un paragraphe.</div>
+<div class="step">Présentez Word, Excel, PowerPoint et Outlook sous forme de liste.</div>
+<div class="step">Justifiez un paragraphe.</div><div class="step">Appliquez une bordure à un mot, puis une bordure différente à un paragraphe.</div>
+<div class="step">Copiez une phrase et collez-la à un autre endroit.</div>
+<div class="step">Appliquez ou créez un style pour un titre.</div>
+</div>
+<div class="tutorial-check"><strong>Auto-vérification :</strong> si vous pouvez effectuer ces neuf actions sans suivre les instructions détaillées, vous maîtrisez les objectifs essentiels de ce tutoriel.</div>
+</section>
+
+<section class="lesson" id="exercices">
+<span class="badge">PRATIQUE • EXERCICES</span>
+<h2>Exercices pratiques — consignes, fichier brut et résultat attendu</h2>
+<p>Pour chaque exercice, téléchargez d’abord le <strong>fichier brut</strong>, réalisez la mise en forme demandée, puis comparez votre travail avec la <strong>capture du résultat attendu</strong>. Les captures ci-dessous proviennent du support d’exercices fourni.</p>
+
+<div class="exercise-grid">
+
+<article class="exercise-card">
+<div class="course-no">EXERCICE 2</div>
+<h3>Programme de spectacles</h3>
+<div class="chips"><span class="chip">Police</span><span class="chip">Taille</span><span class="chip">Alignement</span><span class="chip">Couleur</span></div>
+<p class="small"><strong>Description :</strong> Cet exercice vous entraîne à mettre en forme un programme de spectacles en utilisant plusieurs commandes du groupe <strong>Police</strong>. Vous devrez différencier visuellement les titres, les compagnies, les durées, les artistes, les dates et les résumés en combinant police, taille, couleur, gras, italique, soulignement, ombre et alignement.</p>
+<p><strong>Consignes :</strong></p>
+<div class="steps">
+<div class="step">Mettez le <strong>titre du spectacle</strong> en Times New Roman, taille 18, centré.</div>
+<div class="step">Mettez la <strong>compagnie</strong> en Cambria, taille 12, bleu, alignée à gauche.</div>
+<div class="step">Mettez la <strong>durée</strong> en Times New Roman, taille 12, italique, soulignée, ombrée et alignée à gauche.</div>
+<div class="step">Mettez l’<strong>artiste</strong> en Times New Roman, taille 12, gras, aligné à gauche.</div>
+<div class="step">Mettez la <strong>date</strong> en Times New Roman, taille 12, soulignée et alignée à droite.</div>
+<div class="step">Mettez le <strong>résumé</strong> en Arial, taille 10, centré et gras.</div>
+</div>
+<div class="download-row"><a class="btn primary" href="assets/source/course01/Exo2.docx" download>Télécharger le fichier brut — Exo2.docx</a></div>
+<div class="visual-card"><img src="assets/images/course01/exercises/exercice-2-resultat.jpeg" alt="Résultat attendu de l'exercice 2"><div class="visual-caption"><strong>Résultat attendu — Exercice 2.</strong> Comparez les polices, tailles, couleurs et alignements avec votre document.</div></div>
+</article>
+
+<article class="exercise-card">
+<div class="course-no">EXERCICE 3</div>
+<h3>Lettre de résiliation</h3>
+<div class="chips"><span class="chip">Alignement</span><span class="chip">Justification</span><span class="chip">Retrait</span></div>
+<p class="small"><strong>Description :</strong> Cet exercice porte sur la mise en page d’une lettre. L’objectif est d’organiser correctement les différents blocs du courrier et d’améliorer sa lisibilité grâce aux <strong>alignements</strong>, à la <strong>justification</strong> et aux <strong>retraits de paragraphe</strong>.</p>
+<p><strong>Consignes :</strong></p>
+<div class="steps">
+<div class="step">Alignez le <strong>bloc envoyeur</strong> à gauche.</div>
+<div class="step">Alignez le <strong>bloc destinataire</strong> à droite.</div>
+<div class="step">Justifiez le <strong>courrier</strong> et appliquez un retrait de paragraphe de 2,5.</div>
+<div class="step">Centrez le <strong>bloc d’identification</strong>.</div>
+<div class="step">Appliquez à la <strong>signature</strong> la taille 12 indiquée dans le support.</div>
+</div>
+<div class="download-row"><a class="btn primary" href="assets/source/course01/Exo3.docx" download>Télécharger le fichier brut — Exo3.docx</a></div>
+<div class="visual-card"><img src="assets/images/course01/exercises/exercice-3-resultat.jpeg" alt="Résultat attendu de l'exercice 3"><div class="visual-caption"><strong>Résultat attendu — Exercice 3.</strong> Vérifiez surtout la position des blocs, la justification du courrier et les retraits.</div></div>
+</article>
+
+<article class="exercise-card">
+<div class="course-no">EXERCICE 5</div>
+<h3>Bordures et trame</h3>
+<div class="chips"><span class="chip">Bordures</span><span class="chip">Trame</span></div>
+<p class="small"><strong>Description :</strong> Cet exercice vous permet de pratiquer les <strong>bordures</strong> et la <strong>trame de fond</strong>. Vous apprendrez à encadrer un titre et un sous-titre, à choisir une épaisseur de bordure et à appliquer une couleur d’arrière-plan afin de mettre certaines informations en évidence.</p>
+<p><strong>Consignes :</strong></p>
+<div class="steps">
+<div class="step">Sur le <strong>titre</strong>, appliquez une bordure double de <strong>2,6 pt</strong>.</div>
+<div class="step">Appliquez au titre une <strong>trame d’arrière-plan gris 5 %</strong>.</div>
+<div class="step">Sur le <strong>sous-titre</strong>, appliquez une bordure de <strong>1 pt</strong>.</div>
+</div>
+<div class="download-row"><a class="btn primary" href="assets/source/course01/Exo5.docx" download>Télécharger le fichier brut — Exo5.docx</a></div>
+<div class="visual-card"><img src="assets/images/course01/exercises/exercice-5-resultat.jpeg" alt="Résultat attendu de l'exercice 5"><div class="visual-caption"><strong>Résultat attendu — Exercice 5.</strong> Contrôlez la bordure double, l’épaisseur et la trame de fond.</div></div>
+</article>
+
+<article class="exercise-card">
+<div class="course-no">EXERCICE 6</div>
+<h3>Listes à deux niveaux</h3>
+<div class="chips"><span class="chip">Listes</span><span class="chip">Niveaux</span><span class="chip">Retraits</span></div>
+<p class="small"><strong>Description :</strong> Cet exercice approfondit la création de <strong>listes à plusieurs niveaux</strong>. Vous devrez organiser le texte en quatre listes distinctes, utiliser deux niveaux de numérotation et régler correctement les retraits afin d’obtenir une structure hiérarchique claire et conforme au modèle.</p>
+<p><strong>Consignes :</strong></p>
+<div class="steps">
+<div class="step">Ouvrez le fichier <strong>Exo6</strong>.</div>
+<div class="step">Transformez le texte afin d’obtenir <strong>quatre listes distinctes</strong>.</div>
+<div class="step">Utilisez <strong>deux niveaux de numérotation</strong> en combinant lettres et chiffres.</div>
+<div class="step">Réglez correctement les <strong>retraits</strong> afin de reproduire la hiérarchie du modèle.</div>
+<div class="step">Comparez votre document à la capture du résultat attendu et corrigez les niveaux si nécessaire.</div>
+</div>
+<div class="download-row"><a class="btn primary" href="assets/source/course01/Exo6.docx" download>Télécharger le fichier brut — Exo6.docx</a></div>
+<div class="visual-card"><img src="assets/images/course01/exercises/exercice-6-resultat.jpeg" alt="Résultat attendu de l'exercice 6"><div class="visual-caption"><strong>Résultat attendu — Exercice 6.</strong> Vérifiez les quatre listes, les deux niveaux de numérotation et les retraits.</div></div>
+</article>
+
+</div>
+<div class="tip"><strong>Méthode conseillée :</strong> 1) téléchargez le fichier brut ; 2) réalisez l’exercice sans regarder le modèle ; 3) affichez ensuite la capture du résultat attendu pour vous auto-corriger.</div>
+</section>
+
+
+<nav class="course-navigation" aria-label="Navigation entre les cours">
+<a href="cours-00-demarrage.html"><small>← Cours précédent</small><span>Cours 00 — Démarrage</span></a>
+<a href="cours-insertion.html"><small>Cours suivant →</small><span>Cours 02 — Insertion</span></a>
+</nav>
+<section class="lesson" data-course="accueil"><label class="complete"><input type="checkbox"> <strong>J’ai terminé le tutoriel Cours 01 — Accueil & mise en forme</strong></label></section>
 </article></main><footer class="footer"><div class="shell">Microsoft 365 Learning Hub • Cours Word • A. Aouichat</div></footer><script src="assets/js/app.js"></script></body></html>
